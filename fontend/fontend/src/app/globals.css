@@ -1,0 +1,161 @@
+/* @import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+} */
+
+
+
+
+@import "./css/animate.css";
+@import "./css/owl.carousel.min.css";
+@import "./css/owl.theme.default.min.css";
+@import "./css/magnific-popup.css";
+@import "./css/bootstrap-datepicker.css";
+@import "./css/jquery.timepicker.css";
+@import "./css/flaticon.css";
+@import "./css/style.css";
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  /* Hide Navbar and Footer if they don't have the no-print class but we know their structure */
+  nav,
+  footer,
+  .navbar,
+  .footer {
+    display: none !important;
+  }
+
+  /* Ensure the main content takes full width */
+  .container,
+  .container-fluid {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Hide shadows and borders for cleaner print */
+  .card {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+  }
+}
+
+/* Premium UI Utilities */
+.card-premium {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.card-premium:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.bg-gradient-ocean {
+  background: linear-gradient(135deg, #2E3192 0%, #1BFFFF 100%);
+}
+
+.bg-gradient-sunset {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+}
+
+.bg-gradient-mint {
+  background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+.bg-gradient-purple {
+  background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+}
+
+.table-premium {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.table-premium thead th {
+  background-color: #f8f9fa;
+  color: #6c757d;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  padding: 1rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.table-premium tbody td {
+  padding: 1rem;
+  vertical-align: middle;
+  border-bottom: 1px solid #f1f3f5;
+  color: #495057;
+}
+
+.table-premium tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table-premium tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.badge-soft-success {
+  background-color: rgba(32, 201, 151, 0.15);
+  color: #20c997;
+  padding: 0.5em 0.8em;
+  border-radius: 50rem;
+  font-weight: 600;
+  font-size: 0.75em;
+}
+
+.badge-soft-danger {
+  background-color: rgba(220, 53, 69, 0.15);
+  color: #dc3545;
+  padding: 0.5em 0.8em;
+  border-radius: 50rem;
+  font-weight: 600;
+  font-size: 0.75em;
+}
+
+.badge-soft-primary {
+  background-color: rgba(13, 110, 253, 0.15);
+  color: #0d6efd;
+  padding: 0.5em 0.8em;
+  border-radius: 50rem;
+  font-weight: 600;
+  font-size: 0.75em;
+}

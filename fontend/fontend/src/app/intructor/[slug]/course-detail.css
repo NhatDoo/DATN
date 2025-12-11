@@ -1,0 +1,83 @@
+/* Animation for card fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation for slide-up effect */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation for scale hover effect on image */
+@keyframes scaleHover {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+/* Animation for button pulse */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(0, 123, 255, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+.animate-scale-hover:hover {
+  animation: scaleHover 0.3s ease-in-out forwards;
+}
+
+.btn-enroll {
+  background-color: #007bff;
+  transition: background-color 0.3s ease;
+}
+
+.btn-enroll:hover {
+  background-color: #0056b3;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Ensure compatibility with existing float-up class */
+.float-up {
+  transition: transform 0.3s ease;
+}
+
+.float-up:hover {
+  transform: translateY(-5px);
+}
