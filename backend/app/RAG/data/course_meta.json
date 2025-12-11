@@ -1,0 +1,908 @@
+{
+  "0": {
+    "id": "102efc53-2e91-49fc-bdcc-03e45a23ea90",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "Khóa học trung bình nhất hành tinh",
+    "slug": "khoa-hoc-trung-binh-nhat-hanh-tinh",
+    "short_description": "Hiểu sâu hơn về Node.js và kiến trúc backend",
+    "background": null,
+    "description": "Khóa học chuyên sâu cho developer muốn trở thành backend engineer.",
+    "price_bigint": 1200000,
+    "currency": "VND",
+    "is_published": true,
+    "category_id": "6b92fc85-c04b-491a-9f48-f73171f041f7",
+    "metadata": {},
+    "created_at": {},
+    "updated_at": {},
+    "enrollment_count": 0,
+    "instructor": {
+      "full_name": "Nhật Nguyễn Minh",
+      "email": "minhnhat31003@gmail.com",
+      "avatar_url": null
+    }
+  },
+  "1": {
+    "id": "c5bb1407-1849-4042-a79c-3b2763f5510c",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "Khóa học Node.js nâng cao",
+    "slug": "nextjs-fundamentals-3",
+    "short_description": "Hiểu sâu hơn về Node.js và kiến trúc backend",
+    "background": null,
+    "description": "Khóa học chuyên sâu cho developer muốn trở thành backend engineer.",
+    "price_bigint": 1200000,
+    "currency": "VND",
+    "is_published": true,
+    "category_id": "6b92fc85-c04b-491a-9f48-f73171f041f7",
+    "metadata": {},
+    "created_at": {},
+    "updated_at": {},
+    "enrollment_count": 4,
+    "instructor": {
+      "full_name": "Nhật Nguyễn Minh",
+      "email": "minhnhat31003@gmail.com",
+      "avatar_url": null
+    }
+  },
+  "2": {
+    "id": "85f652ae-6879-452a-b3aa-b2c1ef923510",
+    "instructor_id": "d58cb24e-a9fa-4148-ac1b-87017a042ccd",
+    "title": "Python nâng cao",
+    "slug": "python-nang-cao",
+    "short_description": "Xin chào ",
+    "background": "http://localhost:9000/background/1761717923556.png",
+    "description": null,
+    "price_bigint": 40000,
+    "currency": "VND",
+    "is_published": false,
+    "category_id": "82714632-6440-4c23-ae10-af70c3803bb3",
+    "metadata": {},
+    "created_at": {},
+    "updated_at": {},
+    "enrollment_count": 0,
+    "instructor": {
+      "full_name": "Nhat Doo",
+      "email": "minhnhat310033@gmail.com",
+      "avatar_url": null
+    }
+  },
+  "3": {
+    "id": "5033eb59-72bf-421a-afb6-544da101cbaa",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "NestJS Master Way",
+    "slug": "nestjs-master-way",
+    "short_description": "Hãy đăng ký",
+    "background": null,
+    "description": null,
+    "price_bigint": 450000,
+    "currency": "VND",
+    "is_published": false,
+    "category_id": "67a9e8fb-52ed-49c2-a5a7-9c9cc71bb315",
+    "metadata": {},
+    "created_at": {},
+    "updated_at": {},
+    "enrollment_count": 0,
+    "instructor": {
+      "full_name": "Nhật Nguyễn Minh",
+      "email": "minhnhat31003@gmail.com",
+      "avatar_url": null
+    }
+  },
+  "4": {
+    "id": "b411335e-e5dd-4fde-8538-47733d4bd047",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "NodeJS EZ",
+    "slug": "nodejs-ez",
+    "short_description": "ez",
+    "background": "http://localhost:9000/background/1761412689342.png",
+    "description": null,
+    "price_bigint": 500000,
+    "currency": "VND",
+    "is_published": false,
+    "category_id": "82714632-6440-4c23-ae10-af70c3803bb3",
+    "metadata": {},
+    "created_at": {},
+    "updated_at": {},
+    "enrollment_count": 0,
+    "instructor": {
+      "full_name": "Nhật Nguyễn Minh",
+      "email": "minhnhat31003@gmail.com",
+      "avatar_url": null
+    }
+  },
+  "5": {
+    "id": "c176cef2-d2ff-44ce-a261-efc888421ca2",
+    "instructor_id": "d58cb24e-a9fa-4148-ac1b-87017a042ccd",
+    "title": "Cờ Tướng ",
+    "slug": "co-tuong",
+    "short_description": "Các nước cờ cơ bản",
+    "background": "http://localhost:9000/background/1761718363456.png",
+    "description": null,
+    "price_bigint": 30000,
+    "currency": "VND",
+    "is_published": false,
+    "category_id": "67a9e8fb-52ed-49c2-a5a7-9c9cc71bb315",
+    "metadata": {},
+    "created_at": {},
+    "updated_at": {},
+    "enrollment_count": 0,
+    "instructor": {
+      "full_name": "Nhat Doo",
+      "email": "minhnhat310033@gmail.com",
+      "avatar_url": null
+    }
+  },
+  "6": {
+    "id": "3d9248e5-7189-4a42-8fb8-4cd1090a4968",
+    "instructor_id": "de00acbb-e554-4c75-81bd-b2d98c5ee023",
+    "title": "Khóa học Node.js nâng cao",
+    "slug": "nextjs-fundamentals-2",
+    "short_description": "Hiểu sâu hơn về Node.js và kiến trúc backend",
+    "background": "http://localhost:9000/background/nhat-kali-2025-04-17-00-56-27.png",
+    "description": "Khóa học chuyên sâu cho developer muốn trở thành backend engineer.",
+    "price_bigint": 1200000,
+    "currency": "VND",
+    "is_published": true,
+    "category_id": "6b92fc85-c04b-491a-9f48-f73171f041f7",
+    "metadata": {},
+    "created_at": {},
+    "updated_at": {},
+    "enrollment_count": 1,
+    "instructor": {
+      "full_name": "Nguyễn Minh Nhật",
+      "email": "minhnhat310032@gmail.com",
+      "avatar_url": null
+    }
+  },
+  "7": {
+    "id": "1eb8b8f4-65d3-4269-b485-d171d0aa2398",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "Node",
+    "slug": "node",
+    "short_description": "Node",
+    "background": "http://localhost:9000/background/1761460548243.png",
+    "description": null,
+    "price_bigint": 20000,
+    "currency": "VND",
+    "is_published": false,
+    "category_id": "82714632-6440-4c23-ae10-af70c3803bb3",
+    "metadata": {},
+    "created_at": {},
+    "updated_at": {},
+    "enrollment_count": 0,
+    "instructor": {
+      "full_name": "Nhật Nguyễn Minh",
+      "email": "minhnhat31003@gmail.com",
+      "avatar_url": null
+    }
+  },
+  "8": {
+    "id": "d71b6a4c-ca59-49ff-b387-30519f76a043",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "test",
+    "slug": "test",
+    "short_description": "test",
+    "background": "http://localhost:9000/background/1761462654995.png",
+    "description": null,
+    "price_bigint": 50000,
+    "currency": "VND",
+    "is_published": false,
+    "category_id": "82714632-6440-4c23-ae10-af70c3803bb3",
+    "metadata": {},
+    "created_at": {},
+    "updated_at": {},
+    "enrollment_count": 0,
+    "instructor": {
+      "full_name": "Nhật Nguyễn Minh",
+      "email": "minhnhat31003@gmail.com",
+      "avatar_url": null
+    }
+  },
+  "9": {
+    "id": "4c2003a0-ccec-4e9e-8a7a-723c072fff8b",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "Node",
+    "slug": "node-1",
+    "short_description": "Node",
+    "background": "http://localhost:9000/background/1761467936330.png",
+    "description": null,
+    "price_bigint": 10000,
+    "currency": "VND",
+    "is_published": false,
+    "category_id": "82714632-6440-4c23-ae10-af70c3803bb3",
+    "metadata": {},
+    "created_at": {},
+    "updated_at": {},
+    "enrollment_count": 0,
+    "instructor": {
+      "full_name": "Nhật Nguyễn Minh",
+      "email": "minhnhat31003@gmail.com",
+      "avatar_url": null
+    }
+  },
+  "10": {
+    "id": "d918b29f-6ef6-4cc8-bfbc-84d14261e0f6",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "Khóa học Nest.js nâng ca",
+    "slug": "khoa-hoc-nestjs-nang-ca",
+    "short_description": "Hiểu sâu hơn về Node.js và kiến trúc backend",
+    "background": null,
+    "description": "Khóa học chuyên sâu cho developer muốn trở thành backend engineer.",
+    "price_bigint": 1200000,
+    "currency": "VND",
+    "is_published": true,
+    "category_id": "6b92fc85-c04b-491a-9f48-f73171f041f7",
+    "metadata": {},
+    "created_at": {},
+    "updated_at": {},
+    "enrollment_count": 0,
+    "instructor": {
+      "full_name": "Nhật Nguyễn Minh",
+      "email": "minhnhat31003@gmail.com",
+      "avatar_url": null
+    }
+  },
+  "11": {
+    "id": "122ed848-e21b-4119-8f96-c279a200d863",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "Node",
+    "slug": "node-2",
+    "short_description": "NodeJS",
+    "background": "http://localhost:9000/background/1761470397965.png",
+    "description": null,
+    "price_bigint": 50000,
+    "currency": "VND",
+    "is_published": false,
+    "category_id": "82714632-6440-4c23-ae10-af70c3803bb3",
+    "metadata": {},
+    "created_at": {},
+    "updated_at": {},
+    "enrollment_count": 0,
+    "instructor": {
+      "full_name": "Nhật Nguyễn Minh",
+      "email": "minhnhat31003@gmail.com",
+      "avatar_url": null
+    }
+  },
+  "12": {
+    "id": "d81ae5f4-fc2d-4501-b231-2a412fd8c351",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "bb",
+    "slug": "bb",
+    "short_description": "bb",
+    "background": "http://localhost:9000/background/1761489535077.png",
+    "description": null,
+    "price_bigint": 23000,
+    "currency": "VND",
+    "is_published": false,
+    "category_id": "82714632-6440-4c23-ae10-af70c3803bb3",
+    "metadata": {},
+    "created_at": {},
+    "updated_at": {},
+    "enrollment_count": 0,
+    "instructor": {
+      "full_name": "Nhật Nguyễn Minh",
+      "email": "minhnhat31003@gmail.com",
+      "avatar_url": null
+    }
+  },
+  "13": {
+    "id": "5f5bddb9-4986-4c0b-b2e8-064e12b39765",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "abc",
+    "slug": "abc",
+    "short_description": "abc",
+    "background": "http://localhost:9000/background/1761492594448.png",
+    "description": null,
+    "price_bigint": 23000,
+    "currency": "VND",
+    "is_published": false,
+    "category_id": "82714632-6440-4c23-ae10-af70c3803bb3",
+    "metadata": {},
+    "created_at": {},
+    "updated_at": {},
+    "enrollment_count": 0,
+    "instructor": {
+      "full_name": "Nhật Nguyễn Minh",
+      "email": "minhnhat31003@gmail.com",
+      "avatar_url": null
+    }
+  },
+  "14": {
+    "id": "8f45bb37-4e75-4202-992e-7b1a2f773ca2",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "Khóa học Nest.js nâng cao",
+    "slug": "khoa-hoc-nestjs-nang-cao",
+    "short_description": "Hiểu sâu hơn về Node.js và kiến trúc backend",
+    "background": null,
+    "description": "Khóa học chuyên sâu cho developer muốn trở thành backend engineer.",
+    "price_bigint": 1200000,
+    "currency": "VND",
+    "is_published": true,
+    "category_id": "6b92fc85-c04b-491a-9f48-f73171f041f7",
+    "metadata": {},
+    "created_at": {},
+    "updated_at": {},
+    "enrollment_count": 1,
+    "instructor": {
+      "full_name": "Nhật Nguyễn Minh",
+      "email": "minhnhat31003@gmail.com",
+      "avatar_url": null
+    }
+  },
+  "15": {
+    "id": "7b161c7b-f6c9-4a44-8512-eaf07a8d2f79",
+    "instructor_id": "d58cb24e-a9fa-4148-ac1b-87017a042ccd",
+    "title": "TFT Top1",
+    "slug": "tft-top1",
+    "short_description": "tftt",
+    "background": "http://localhost:9000/background/1761721171218.png",
+    "description": null,
+    "price_bigint": 100,
+    "currency": "VND",
+    "is_published": false,
+    "category_id": "82714632-6440-4c23-ae10-af70c3803bb3",
+    "metadata": {},
+    "created_at": {},
+    "updated_at": {},
+    "enrollment_count": 0,
+    "instructor": {
+      "full_name": "Nhat Doo",
+      "email": "minhnhat310033@gmail.com",
+      "avatar_url": null
+    }
+  },
+  "16": {
+    "id": "7630954e-918a-42e2-9a4a-bdda70e09077",
+    "instructor_id": "d58cb24e-a9fa-4148-ac1b-87017a042ccd",
+    "title": "aa",
+    "slug": "aa",
+    "short_description": "aa",
+    "background": "http://localhost:9000/background/1761721967387.png",
+    "description": null,
+    "price_bigint": 2000,
+    "currency": "VND",
+    "is_published": false,
+    "category_id": "82714632-6440-4c23-ae10-af70c3803bb3",
+    "metadata": {},
+    "created_at": {},
+    "updated_at": {},
+    "enrollment_count": 0,
+    "instructor": {
+      "full_name": "Nhat Doo",
+      "email": "minhnhat310033@gmail.com",
+      "avatar_url": null
+    }
+  },
+  "17": {
+    "id": "6c6d1adf-cc87-43ed-88f7-272614527906",
+    "instructor_id": "d58cb24e-a9fa-4148-ac1b-87017a042ccd",
+    "title": "bbb",
+    "slug": "bbb",
+    "short_description": "bbb",
+    "background": "http://localhost:9000/background/1761722059514.png",
+    "description": null,
+    "price_bigint": 2000,
+    "currency": "VND",
+    "is_published": false,
+    "category_id": "82714632-6440-4c23-ae10-af70c3803bb3",
+    "metadata": {},
+    "created_at": {},
+    "updated_at": {},
+    "enrollment_count": 0,
+    "instructor": {
+      "full_name": "Nhat Doo",
+      "email": "minhnhat310033@gmail.com",
+      "avatar_url": null
+    }
+  },
+  "18": {
+    "id": "7dc86d2d-9d74-4ff4-9318-5a858f32d02b",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "Khóa học trung bình nhất hành tinh",
+    "slug": "khoa-hoc-trung-binh-nhat-hanh-tinh-1",
+    "short_description": "Hiểu sâu hơn về Node.js và kiến trúc backend",
+    "background": null,
+    "description": "Khóa học chuyên sâu cho developer muốn trở thành backend engineer.",
+    "price_bigint": 1200000,
+    "currency": "VND",
+    "is_published": true,
+    "category_id": "6b92fc85-c04b-491a-9f48-f73171f041f7",
+    "metadata": {},
+    "created_at": {},
+    "updated_at": {},
+    "enrollment_count": 0,
+    "instructor": {
+      "full_name": "Nhật Nguyễn Minh",
+      "email": "minhnhat31003@gmail.com",
+      "avatar_url": null
+    }
+  },
+  "19": {
+    "id": "67868c9c-3210-44ea-a579-b172883ed4b9",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "Khóa học trung bình nhất hành tinh",
+    "slug": "khoa-hoc-trung-binh-nhat-hanh-tinh-2",
+    "short_description": "Hiểu sâu hơn về Node.js và kiến trúc backend",
+    "background": null,
+    "description": "Khóa học chuyên sâu cho developer muốn trở thành backend engineer.",
+    "price_bigint": 1200000,
+    "currency": "VND",
+    "is_published": true,
+    "category_id": "6b92fc85-c04b-491a-9f48-f73171f041f7",
+    "metadata": {},
+    "created_at": {},
+    "updated_at": {},
+    "enrollment_count": 0,
+    "instructor": {
+      "full_name": "Nhật Nguyễn Minh",
+      "email": "minhnhat31003@gmail.com",
+      "avatar_url": null
+    }
+  },
+  "20": {
+    "id": "32a41ac4-d7c3-4f93-a21a-26258968a3c3",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "Khóa học trung bình nhất hành tinh",
+    "slug": "khoa-hoc-trung-binh-nhat-hanh-tinh-3",
+    "short_description": "Hiểu sâu hơn về Node.js và kiến trúc backend",
+    "background": null,
+    "description": "Khóa học chuyên sâu cho developer muốn trở thành backend engineer.",
+    "price_bigint": 1200000,
+    "currency": "VND",
+    "is_published": true,
+    "category_id": "6b92fc85-c04b-491a-9f48-f73171f041f7",
+    "metadata": {},
+    "created_at": {},
+    "updated_at": {},
+    "enrollment_count": 0,
+    "instructor": {
+      "full_name": "Nhật Nguyễn Minh",
+      "email": "minhnhat31003@gmail.com",
+      "avatar_url": null
+    }
+  },
+  "21": {
+    "id": "b1a46d26-cfe1-4cef-a32c-a14f3d2216df",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "Cờ vua",
+    "slug": "co-vua",
+    "short_description": "Cờ vua",
+    "background": null,
+    "description": "",
+    "price_bigint": 1200000,
+    "currency": "VND",
+    "is_published": true,
+    "category_id": "6b92fc85-c04b-491a-9f48-f73171f041f7",
+    "metadata": {},
+    "created_at": {},
+    "updated_at": {},
+    "enrollment_count": 0,
+    "instructor": {
+      "full_name": "Nhật Nguyễn Minh",
+      "email": "minhnhat31003@gmail.com",
+      "avatar_url": null
+    }
+  },
+  "22": {
+    "id": "82df953b-1671-4abe-a31b-f39483adc6c2",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "Cờ vây",
+    "slug": "co-vay",
+    "short_description": "Cờ vua",
+    "background": null,
+    "description": "",
+    "price_bigint": 1200000,
+    "currency": "VND",
+    "is_published": true,
+    "category_id": "6b92fc85-c04b-491a-9f48-f73171f041f7",
+    "metadata": {},
+    "created_at": {},
+    "updated_at": {},
+    "enrollment_count": 0,
+    "instructor": {
+      "full_name": "Nhật Nguyễn Minh",
+      "email": "minhnhat31003@gmail.com",
+      "avatar_url": null
+    }
+  },
+  "23": {
+    "id": "e47ea255-7b4d-4182-97bd-77b93ce0c8b6",
+    "instructor_id": "d58cb24e-a9fa-4148-ac1b-87017a042ccd",
+    "title": "Khóa học miễn phí về TFT ",
+    "slug": "khoa-hoc-mien-phi-ve-tft",
+    "short_description": "Khóa học siêu miễn phí dành cho ai muốn top 8",
+    "background": "http://localhost:9000/background/1761956010961.webp",
+    "description": null,
+    "price_bigint": "0",
+    "currency": "VND",
+    "is_published": false,
+    "category_id": "82714632-6440-4c23-ae10-af70c3803bb3",
+    "metadata": {},
+    "created_at": "2025-11-01T00:13:34.035Z",
+    "updated_at": "2025-11-01T00:13:34.035Z",
+    "enrollment_count": 0
+  },
+  "24": {
+    "id": "1e1f70b1-76a4-4277-9739-3a24da349685",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "Cờ vua ",
+    "slug": "co-vua",
+    "short_description": "Đây là khóa học cơ bản về cờ vua ",
+    "background": "http://localhost:9000/background/1764041444904.png",
+    "description": null,
+    "price_bigint": "20000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-25T03:30:47.832Z",
+    "updated_at": "2025-11-25T03:30:47.832Z",
+    "enrollment_count": 0
+  },
+  "25": {
+    "id": "fdd3b255-f8f7-488e-aae1-5442206150b1",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "Khóa học nodeJS ",
+    "slug": "khoa-hoc-nodejs",
+    "short_description": "Đây là khóa học node JS mình lập ra với mục đích tham khảo ",
+    "background": "http://localhost:9000/background/1764053013226.jpg",
+    "description": null,
+    "price_bigint": "30000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-25T06:43:35.901Z",
+    "updated_at": "2025-11-25T06:43:35.901Z",
+    "enrollment_count": 0
+  },
+  "26": {
+    "id": "b5ed19ee-5b33-4a1f-a0d9-d751a1e9ddc9",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "Khóa học cơ bản về cờ tướng ",
+    "slug": "khoa-hoc-co-ban-ve-co-tuong",
+    "short_description": "Đây là khóa học cơ bản về cờ tướng ",
+    "background": "http://localhost:9000/background/1764073926897.png",
+    "description": null,
+    "price_bigint": "30000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-25T12:32:09.738Z",
+    "updated_at": "2025-11-25T12:32:09.738Z",
+    "enrollment_count": 0
+  },
+  "27": {
+    "id": "d8d2b274-1d6c-4207-beb3-496319c4cb78",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "Chess 2",
+    "slug": "chess-2",
+    "short_description": "Chess 2",
+    "background": "http://localhost:9000/background/1764126581500.png",
+    "description": null,
+    "price_bigint": "20000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-26T03:09:44.075Z",
+    "updated_at": "2025-11-26T03:09:44.075Z",
+    "enrollment_count": 0,
+    "categories": [
+      {
+        "id": "4ab0ef9e-a7f3-43e2-bfdd-aa632f3e2170",
+        "name": "BoardGame",
+        "slug": "boardgame",
+        "description": "",
+        "created_at": "2025-11-25T03:05:40.148Z"
+      },
+      {
+        "id": "0d009ff2-1b6e-4e85-9df7-9fce2053cbd6",
+        "name": "Chess",
+        "slug": "chess",
+        "description": "",
+        "created_at": "2025-11-25T03:05:59.149Z"
+      }
+    ]
+  },
+  "28": {
+    "id": "ba529a35-97ff-45bb-80f8-f6e5688e514e",
+    "instructor_id": "b6c3c3c2-9d88-4b6a-94df-0f715dd0ab11",
+    "title": "Khóa học Board Game nhập môn",
+    "slug": "boardgame-nhap-mon",
+    "short_description": "Học cách chơi các loại boardgame phổ biến.",
+    "background": null,
+    "description": null,
+    "price_bigint": "199000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-28T00:11:45.674Z",
+    "updated_at": "2025-11-28T00:11:45.674Z",
+    "enrollment_count": 0,
+    "categories": [
+      {
+        "id": "4ab0ef9e-a7f3-43e2-bfdd-aa632f3e2170",
+        "name": "BoardGame",
+        "slug": "boardgame",
+        "description": "",
+        "created_at": "2025-11-25T03:05:40.148Z"
+      }
+    ]
+  },
+  "29": {
+    "id": "8d99b2b1-7e07-4018-9d4a-d7dd79773c26",
+    "instructor_id": "b6c3c3c2-9d88-4b6a-94df-0f715dd0ab11",
+    "title": "Chiến thuật chơi cờ vua nâng cao",
+    "slug": "chess-nang-cao",
+    "short_description": "Học chiến thuật cờ vua từ cơ bản đến nâng cao.",
+    "background": null,
+    "description": null,
+    "price_bigint": "249000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-28T00:12:20.075Z",
+    "updated_at": "2025-11-28T00:12:20.075Z",
+    "enrollment_count": 0,
+    "categories": [
+      {
+        "id": "0d009ff2-1b6e-4e85-9df7-9fce2053cbd6",
+        "name": "Chess",
+        "slug": "chess",
+        "description": "",
+        "created_at": "2025-11-25T03:05:59.149Z"
+      }
+    ]
+  },
+  "30": {
+    "id": "3c996981-e608-4d53-b54a-43ee061f072f",
+    "instructor_id": "b6c3c3c2-9d88-4b6a-94df-0f715dd0ab11",
+    "title": "Huấn luyện thể thao tổng hợp",
+    "slug": "sport-training",
+    "short_description": "Các kỹ thuật cơ bản cho người mới tập thể thao.",
+    "background": null,
+    "description": null,
+    "price_bigint": "299000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-28T00:12:28.579Z",
+    "updated_at": "2025-11-28T00:12:28.579Z",
+    "enrollment_count": 0,
+    "categories": [
+      {
+        "id": "b75fa060-92f2-4f20-b980-bd0eb99a0d7c",
+        "name": "Sport",
+        "slug": "sport",
+        "description": "",
+        "created_at": "2025-11-25T03:06:13.556Z"
+      }
+    ]
+  },
+  "31": {
+    "id": "ead131f5-883c-426d-b4e5-9d4ac68621b7",
+    "instructor_id": "b6c3c3c2-9d88-4b6a-94df-0f715dd0ab11",
+    "title": "Tư duy chiến lược qua BoardGame & Chess",
+    "slug": "chiendich-boardgame-chess",
+    "short_description": "Học tư duy logic và chiến thuật qua trò chơi.",
+    "background": null,
+    "description": null,
+    "price_bigint": "299000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-28T00:12:35.370Z",
+    "updated_at": "2025-11-28T00:12:35.370Z",
+    "enrollment_count": 0,
+    "categories": [
+      {
+        "id": "4ab0ef9e-a7f3-43e2-bfdd-aa632f3e2170",
+        "name": "BoardGame",
+        "slug": "boardgame",
+        "description": "",
+        "created_at": "2025-11-25T03:05:40.148Z"
+      },
+      {
+        "id": "0d009ff2-1b6e-4e85-9df7-9fce2053cbd6",
+        "name": "Chess",
+        "slug": "chess",
+        "description": "",
+        "created_at": "2025-11-25T03:05:59.149Z"
+      }
+    ]
+  },
+  "32": {
+    "id": "e2f4dbf0-1267-4674-b293-1fe44dd7df6f",
+    "instructor_id": "b6c3c3c2-9d88-4b6a-94df-0f715dd0ab11",
+    "title": "Rèn luyện phản xạ qua Chess & Sport",
+    "slug": "ren-luyen-phan-xa",
+    "short_description": "Cải thiện phản xạ, tư duy và thể lực qua trò chơi.",
+    "background": null,
+    "description": null,
+    "price_bigint": "199000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-28T00:12:42.288Z",
+    "updated_at": "2025-11-28T00:12:42.288Z",
+    "enrollment_count": 0,
+    "categories": [
+      {
+        "id": "0d009ff2-1b6e-4e85-9df7-9fce2053cbd6",
+        "name": "Chess",
+        "slug": "chess",
+        "description": "",
+        "created_at": "2025-11-25T03:05:59.149Z"
+      },
+      {
+        "id": "b75fa060-92f2-4f20-b980-bd0eb99a0d7c",
+        "name": "Sport",
+        "slug": "sport",
+        "description": "",
+        "created_at": "2025-11-25T03:06:13.556Z"
+      }
+    ]
+  },
+  "33": {
+    "id": "7a687425-fdcb-48bf-a82a-1c14cc8850ce",
+    "instructor_id": "b6c3c3c2-9d88-4b6a-94df-0f715dd0ab11",
+    "title": "Nghệ thuật giải quyết vấn đề bằng BoardGame",
+    "slug": "giai-quyet-van-de-boardgame",
+    "short_description": "Phát triển tư duy giải quyết vấn đề thông qua boardgame.",
+    "background": null,
+    "description": null,
+    "price_bigint": "259000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-28T00:13:02.996Z",
+    "updated_at": "2025-11-28T00:13:02.996Z",
+    "enrollment_count": 0,
+    "categories": [
+      {
+        "id": "4ab0ef9e-a7f3-43e2-bfdd-aa632f3e2170",
+        "name": "BoardGame",
+        "slug": "boardgame",
+        "description": "",
+        "created_at": "2025-11-25T03:05:40.148Z"
+      }
+    ]
+  },
+  "34": {
+    "id": "ab5632dc-4477-4025-9022-8f09ef42080e",
+    "instructor_id": "b6c3c3c2-9d88-4b6a-94df-0f715dd0ab11",
+    "title": "Cờ vua khai cuộc nâng cao",
+    "slug": "chess-khai-cuoc-nang-cao",
+    "short_description": "Tập trung phân tích và luyện tập các thế khai cuộc quan trọng.",
+    "background": null,
+    "description": null,
+    "price_bigint": "349000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-28T00:13:12.605Z",
+    "updated_at": "2025-11-28T00:13:12.605Z",
+    "enrollment_count": 0,
+    "categories": [
+      {
+        "id": "0d009ff2-1b6e-4e85-9df7-9fce2053cbd6",
+        "name": "Chess",
+        "slug": "chess",
+        "description": "",
+        "created_at": "2025-11-25T03:05:59.149Z"
+      }
+    ]
+  },
+  "35": {
+    "id": "dacbc74c-3f6a-4d7c-aa79-49ea570a9141",
+    "instructor_id": "b6c3c3c2-9d88-4b6a-94df-0f715dd0ab11",
+    "title": "Thể thao dành cho người bận rộn",
+    "slug": "sport-cho-nguoi-ban-ron",
+    "short_description": "Bài tập đơn giản nhưng hiệu quả cho lịch trình bận rộn.",
+    "background": null,
+    "description": null,
+    "price_bigint": "159000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-28T00:13:20.584Z",
+    "updated_at": "2025-11-28T00:13:20.584Z",
+    "enrollment_count": 0,
+    "categories": [
+      {
+        "id": "b75fa060-92f2-4f20-b980-bd0eb99a0d7c",
+        "name": "Sport",
+        "slug": "sport",
+        "description": "",
+        "created_at": "2025-11-25T03:06:13.556Z"
+      }
+    ]
+  },
+  "36": {
+    "id": "6f2a17ed-f018-4e5e-8d87-caea757c1e0d",
+    "instructor_id": "b6c3c3c2-9d88-4b6a-94df-0f715dd0ab11",
+    "title": "Chiến thuật tư duy kết hợp BoardGame & Thể thao",
+    "slug": "chien-thuat-boardgame-sport",
+    "short_description": "Kết hợp phân tích chiến thuật logic và thể lực.",
+    "background": null,
+    "description": null,
+    "price_bigint": "289000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-28T00:13:26.853Z",
+    "updated_at": "2025-11-28T00:13:26.853Z",
+    "enrollment_count": 0,
+    "categories": [
+      {
+        "id": "4ab0ef9e-a7f3-43e2-bfdd-aa632f3e2170",
+        "name": "BoardGame",
+        "slug": "boardgame",
+        "description": "",
+        "created_at": "2025-11-25T03:05:40.148Z"
+      },
+      {
+        "id": "b75fa060-92f2-4f20-b980-bd0eb99a0d7c",
+        "name": "Sport",
+        "slug": "sport",
+        "description": "",
+        "created_at": "2025-11-25T03:06:13.556Z"
+      }
+    ]
+  },
+  "37": {
+    "id": "24c0c8b6-4aed-4e86-b8d9-2de932123bfc",
+    "instructor_id": "b6c3c3c2-9d88-4b6a-94df-0f715dd0ab11",
+    "title": "Master Chess & BoardGame chiến lược",
+    "slug": "master-chess-boardgame",
+    "short_description": "Khóa học chuyên sâu về chiến thuật trong cả Chess và BoardGame.",
+    "background": null,
+    "description": null,
+    "price_bigint": "399000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-28T00:13:34.300Z",
+    "updated_at": "2025-11-28T00:13:34.300Z",
+    "enrollment_count": 0,
+    "categories": [
+      {
+        "id": "4ab0ef9e-a7f3-43e2-bfdd-aa632f3e2170",
+        "name": "BoardGame",
+        "slug": "boardgame",
+        "description": "",
+        "created_at": "2025-11-25T03:05:40.148Z"
+      },
+      {
+        "id": "0d009ff2-1b6e-4e85-9df7-9fce2053cbd6",
+        "name": "Chess",
+        "slug": "chess",
+        "description": "",
+        "created_at": "2025-11-25T03:05:59.149Z"
+      }
+    ]
+  },
+  "38": {
+    "id": "9ab14fe6-4743-4c74-b5ae-4ba892294de8",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "test",
+    "slug": "test",
+    "short_description": "Test",
+    "background": "http://localhost:9000/background/1764321922473.png",
+    "description": null,
+    "price_bigint": "20000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-28T09:26:35.338Z",
+    "updated_at": "2025-11-28T09:26:35.338Z",
+    "enrollment_count": 0,
+    "categories": [
+      {
+        "id": "0d009ff2-1b6e-4e85-9df7-9fce2053cbd6",
+        "name": "Chess",
+        "slug": "chess",
+        "description": "",
+        "created_at": "2025-11-25T03:05:59.149Z"
+      }
+    ]
+  }
+}

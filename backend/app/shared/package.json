@@ -1,0 +1,24 @@
+{
+  "name": "shared",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@nestjs/common": "^11.1.6",
+    "@nestjs/config": "^4.0.2",
+    "@nestjs/core": "^11.1.6",
+    "axios": "^1.13.1",
+    "slugify": "^1.6.6",
+    "typescript": "^5.9.2"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.9.36"
+  }
+}

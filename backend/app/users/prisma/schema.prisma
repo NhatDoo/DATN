@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../../node_modules/.prisma/users-client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id              String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email           String    @unique
+  phone           String?
+  password_hash   String?
+  full_name       String?
+  role            user_role @default(student)
+  avatar_url      String?
+  metadata        Json?     @default("{}")
+  created_at      DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at      DateTime  @default(now()) @db.Timestamptz(6)
+  deleted_at      DateTime? @db.Timestamptz(6)
+  is_info_updated Boolean?  @default(false)
+  reset_token     String?
+  reset_expires   DateTime? @db.Timestamp(6)
+  refresh_token   String?
+  refresh_expires DateTime? @db.Timestamp(6)
+  is_banned       Boolean?  @default(false)
+}
+
+model email_verifications {
+  id         String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email      String    @unique @db.VarChar(255)
+  code       String    @db.VarChar(6)
+  created_at DateTime? @default(now()) @db.Timestamp(6)
+  expires_at DateTime  @db.Timestamp(6)
+}
+
+enum user_role {
+  student
+  instructor
+  admin
+}

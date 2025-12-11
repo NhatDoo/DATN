@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../../node_modules/.prisma/recommend-client"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("MONGODB_URL")
+}
+
+model user_activity {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  user_id       String
+  course_id     String?        // có thể null nếu chỉ là hành vi search
+  action_type   String?        // "search", "view", "enroll", "review", "like", ...
+  keyword       String?        // nếu action_type = "search"
+  tag           String[]       // các tag liên quan (nếu có)
+  rating        Int?           // nếu action_type = "review"
+  price         Int?           // giá khóa học tại thời điểm user tương tác
+  timestamp     DateTime @default(now())
+  metadata      Json?          // lưu thêm data tùy biến (ví dụ IP, device, v.v.)
+  
+
+}

@@ -1,0 +1,428 @@
+[
+  {
+    "id": "1e1f70b1-76a4-4277-9739-3a24da349685",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "Cờ vua ",
+    "slug": "co-vua",
+    "short_description": "Đây là khóa học cơ bản về cờ vua ",
+    "background": "http://localhost:9000/background/1764041444904.png",
+    "description": null,
+    "price_bigint": "20000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-25T03:30:47.832Z",
+    "updated_at": "2025-11-25T03:30:47.832Z",
+    "enrollment_count": 0,
+    "lessons": [
+      {
+        "id": "d43d1675-3d56-4644-8031-d3d0cbdec0ff",
+        "course_id": "1e1f70b1-76a4-4277-9739-3a24da349685",
+        "title": "Các nước ",
+        "content": "",
+        "media_url": "",
+        "order_idx": 0,
+        "duration_seconds": 0,
+        "status": "temp"
+      },
+      {
+        "id": "31ebfc69-94f3-4dfc-8756-e210784fe030",
+        "course_id": "1e1f70b1-76a4-4277-9739-3a24da349685",
+        "title": "Bài 3",
+        "content": "",
+        "media_url": "",
+        "order_idx": 0,
+        "duration_seconds": 0,
+        "status": "temp"
+      }
+    ]
+  },
+  {
+    "id": "fdd3b255-f8f7-488e-aae1-5442206150b1",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "Khóa học nodeJS ",
+    "slug": "khoa-hoc-nodejs",
+    "short_description": "Đây là khóa học node JS mình lập ra với mục đích tham khảo ",
+    "background": "http://localhost:9000/background/1764053013226.jpg",
+    "description": null,
+    "price_bigint": "30000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-25T06:43:35.901Z",
+    "updated_at": "2025-11-25T06:43:35.901Z",
+    "enrollment_count": 0,
+    "lessons": [
+      {
+        "id": "313aaf15-eff8-49a6-ba5a-9f5b2b201c7f",
+        "course_id": "fdd3b255-f8f7-488e-aae1-5442206150b1",
+        "title": "Đây là khóa học nodeJS ",
+        "content": "",
+        "media_url": "",
+        "order_idx": 0,
+        "duration_seconds": 0,
+        "status": "temp"
+      }
+    ]
+  },
+  {
+    "id": "b5ed19ee-5b33-4a1f-a0d9-d751a1e9ddc9",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "Khóa học cơ bản về cờ tướng ",
+    "slug": "khoa-hoc-co-ban-ve-co-tuong",
+    "short_description": "Đây là khóa học cơ bản về cờ tướng ",
+    "background": "http://localhost:9000/background/1764073926897.png",
+    "description": null,
+    "price_bigint": "30000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-25T12:32:09.738Z",
+    "updated_at": "2025-11-25T12:32:09.738Z",
+    "enrollment_count": 0,
+    "lessons": [
+      {
+        "id": "fe8c7356-417a-45b9-9fed-c79eac03fdf9",
+        "course_id": "b5ed19ee-5b33-4a1f-a0d9-d751a1e9ddc9",
+        "title": "Bài 1 luật chơi cờ tướng ",
+        "content": "",
+        "media_url": "",
+        "order_idx": 0,
+        "duration_seconds": 0,
+        "status": "temp"
+      },
+      {
+        "id": "3013120b-e8c9-4667-9b11-db7859cbf329",
+        "course_id": "b5ed19ee-5b33-4a1f-a0d9-d751a1e9ddc9",
+        "title": "Bài học 2 ",
+        "content": "",
+        "media_url": "",
+        "order_idx": 0,
+        "duration_seconds": 0,
+        "status": "temp"
+      }
+    ]
+  },
+  {
+    "id": "d8d2b274-1d6c-4207-beb3-496319c4cb78",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "Chess 2",
+    "slug": "chess-2",
+    "short_description": "Chess 2",
+    "background": "http://localhost:9000/background/1764126581500.png",
+    "description": null,
+    "price_bigint": "20000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-26T03:09:44.075Z",
+    "updated_at": "2025-11-26T03:09:44.075Z",
+    "enrollment_count": 0,
+    "categories": [
+      {
+        "id": "4ab0ef9e-a7f3-43e2-bfdd-aa632f3e2170",
+        "name": "BoardGame",
+        "slug": "boardgame",
+        "description": "",
+        "created_at": "2025-11-25T03:05:40.148Z"
+      },
+      {
+        "id": "0d009ff2-1b6e-4e85-9df7-9fce2053cbd6",
+        "name": "Chess",
+        "slug": "chess",
+        "description": "",
+        "created_at": "2025-11-25T03:05:59.149Z"
+      }
+    ]
+  },
+  {
+    "id": "8d99b2b1-7e07-4018-9d4a-d7dd79773c26",
+    "instructor_id": "b6c3c3c2-9d88-4b6a-94df-0f715dd0ab11",
+    "title": "Chiến thuật chơi cờ vua nâng cao",
+    "slug": "chess-nang-cao",
+    "short_description": "Học chiến thuật cờ vua từ cơ bản đến nâng cao.",
+    "background": null,
+    "description": null,
+    "price_bigint": "249000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-28T00:12:20.075Z",
+    "updated_at": "2025-11-28T00:12:20.075Z",
+    "enrollment_count": 0,
+    "categories": [
+      {
+        "id": "0d009ff2-1b6e-4e85-9df7-9fce2053cbd6",
+        "name": "Chess",
+        "slug": "chess",
+        "description": "",
+        "created_at": "2025-11-25T03:05:59.149Z"
+      }
+    ]
+  },
+  {
+    "id": "3c996981-e608-4d53-b54a-43ee061f072f",
+    "instructor_id": "b6c3c3c2-9d88-4b6a-94df-0f715dd0ab11",
+    "title": "Huấn luyện thể thao tổng hợp",
+    "slug": "sport-training",
+    "short_description": "Các kỹ thuật cơ bản cho người mới tập thể thao.",
+    "background": null,
+    "description": null,
+    "price_bigint": "299000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-28T00:12:28.579Z",
+    "updated_at": "2025-11-28T00:12:28.579Z",
+    "enrollment_count": 0,
+    "categories": [
+      {
+        "id": "b75fa060-92f2-4f20-b980-bd0eb99a0d7c",
+        "name": "Sport",
+        "slug": "sport",
+        "description": "",
+        "created_at": "2025-11-25T03:06:13.556Z"
+      }
+    ]
+  },
+  {
+    "id": "ead131f5-883c-426d-b4e5-9d4ac68621b7",
+    "instructor_id": "b6c3c3c2-9d88-4b6a-94df-0f715dd0ab11",
+    "title": "Tư duy chiến lược qua BoardGame & Chess",
+    "slug": "chiendich-boardgame-chess",
+    "short_description": "Học tư duy logic và chiến thuật qua trò chơi.",
+    "background": null,
+    "description": null,
+    "price_bigint": "299000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-28T00:12:35.370Z",
+    "updated_at": "2025-11-28T00:12:35.370Z",
+    "enrollment_count": 0,
+    "categories": [
+      {
+        "id": "4ab0ef9e-a7f3-43e2-bfdd-aa632f3e2170",
+        "name": "BoardGame",
+        "slug": "boardgame",
+        "description": "",
+        "created_at": "2025-11-25T03:05:40.148Z"
+      },
+      {
+        "id": "0d009ff2-1b6e-4e85-9df7-9fce2053cbd6",
+        "name": "Chess",
+        "slug": "chess",
+        "description": "",
+        "created_at": "2025-11-25T03:05:59.149Z"
+      }
+    ]
+  },
+  {
+    "id": "e2f4dbf0-1267-4674-b293-1fe44dd7df6f",
+    "instructor_id": "b6c3c3c2-9d88-4b6a-94df-0f715dd0ab11",
+    "title": "Rèn luyện phản xạ qua Chess & Sport",
+    "slug": "ren-luyen-phan-xa",
+    "short_description": "Cải thiện phản xạ, tư duy và thể lực qua trò chơi.",
+    "background": null,
+    "description": null,
+    "price_bigint": "199000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-28T00:12:42.288Z",
+    "updated_at": "2025-11-28T00:12:42.288Z",
+    "enrollment_count": 0,
+    "categories": [
+      {
+        "id": "0d009ff2-1b6e-4e85-9df7-9fce2053cbd6",
+        "name": "Chess",
+        "slug": "chess",
+        "description": "",
+        "created_at": "2025-11-25T03:05:59.149Z"
+      },
+      {
+        "id": "b75fa060-92f2-4f20-b980-bd0eb99a0d7c",
+        "name": "Sport",
+        "slug": "sport",
+        "description": "",
+        "created_at": "2025-11-25T03:06:13.556Z"
+      }
+    ]
+  },
+  {
+    "id": "7a687425-fdcb-48bf-a82a-1c14cc8850ce",
+    "instructor_id": "b6c3c3c2-9d88-4b6a-94df-0f715dd0ab11",
+    "title": "Nghệ thuật giải quyết vấn đề bằng BoardGame",
+    "slug": "giai-quyet-van-de-boardgame",
+    "short_description": "Phát triển tư duy giải quyết vấn đề thông qua boardgame.",
+    "background": null,
+    "description": null,
+    "price_bigint": "259000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-28T00:13:02.996Z",
+    "updated_at": "2025-11-28T00:13:02.996Z",
+    "enrollment_count": 0,
+    "categories": [
+      {
+        "id": "4ab0ef9e-a7f3-43e2-bfdd-aa632f3e2170",
+        "name": "BoardGame",
+        "slug": "boardgame",
+        "description": "",
+        "created_at": "2025-11-25T03:05:40.148Z"
+      }
+    ]
+  },
+  {
+    "id": "ab5632dc-4477-4025-9022-8f09ef42080e",
+    "instructor_id": "b6c3c3c2-9d88-4b6a-94df-0f715dd0ab11",
+    "title": "Cờ vua khai cuộc nâng cao",
+    "slug": "chess-khai-cuoc-nang-cao",
+    "short_description": "Tập trung phân tích và luyện tập các thế khai cuộc quan trọng.",
+    "background": null,
+    "description": null,
+    "price_bigint": "349000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-28T00:13:12.605Z",
+    "updated_at": "2025-11-28T00:13:12.605Z",
+    "enrollment_count": 0,
+    "categories": [
+      {
+        "id": "0d009ff2-1b6e-4e85-9df7-9fce2053cbd6",
+        "name": "Chess",
+        "slug": "chess",
+        "description": "",
+        "created_at": "2025-11-25T03:05:59.149Z"
+      }
+    ]
+  },
+  {
+    "id": "dacbc74c-3f6a-4d7c-aa79-49ea570a9141",
+    "instructor_id": "b6c3c3c2-9d88-4b6a-94df-0f715dd0ab11",
+    "title": "Thể thao dành cho người bận rộn",
+    "slug": "sport-cho-nguoi-ban-ron",
+    "short_description": "Bài tập đơn giản nhưng hiệu quả cho lịch trình bận rộn.",
+    "background": null,
+    "description": null,
+    "price_bigint": "159000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-28T00:13:20.584Z",
+    "updated_at": "2025-11-28T00:13:20.584Z",
+    "enrollment_count": 0,
+    "categories": [
+      {
+        "id": "b75fa060-92f2-4f20-b980-bd0eb99a0d7c",
+        "name": "Sport",
+        "slug": "sport",
+        "description": "",
+        "created_at": "2025-11-25T03:06:13.556Z"
+      }
+    ]
+  },
+  {
+    "id": "6f2a17ed-f018-4e5e-8d87-caea757c1e0d",
+    "instructor_id": "b6c3c3c2-9d88-4b6a-94df-0f715dd0ab11",
+    "title": "Chiến thuật tư duy kết hợp BoardGame & Thể thao",
+    "slug": "chien-thuat-boardgame-sport",
+    "short_description": "Kết hợp phân tích chiến thuật logic và thể lực.",
+    "background": null,
+    "description": null,
+    "price_bigint": "289000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-28T00:13:26.853Z",
+    "updated_at": "2025-11-28T00:13:26.853Z",
+    "enrollment_count": 0,
+    "categories": [
+      {
+        "id": "4ab0ef9e-a7f3-43e2-bfdd-aa632f3e2170",
+        "name": "BoardGame",
+        "slug": "boardgame",
+        "description": "",
+        "created_at": "2025-11-25T03:05:40.148Z"
+      },
+      {
+        "id": "b75fa060-92f2-4f20-b980-bd0eb99a0d7c",
+        "name": "Sport",
+        "slug": "sport",
+        "description": "",
+        "created_at": "2025-11-25T03:06:13.556Z"
+      }
+    ]
+  },
+  {
+    "id": "24c0c8b6-4aed-4e86-b8d9-2de932123bfc",
+    "instructor_id": "b6c3c3c2-9d88-4b6a-94df-0f715dd0ab11",
+    "title": "Master Chess & BoardGame chiến lược",
+    "slug": "master-chess-boardgame",
+    "short_description": "Khóa học chuyên sâu về chiến thuật trong cả Chess và BoardGame.",
+    "background": null,
+    "description": null,
+    "price_bigint": "399000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-28T00:13:34.300Z",
+    "updated_at": "2025-11-28T00:13:34.300Z",
+    "enrollment_count": 0,
+    "categories": [
+      {
+        "id": "4ab0ef9e-a7f3-43e2-bfdd-aa632f3e2170",
+        "name": "BoardGame",
+        "slug": "boardgame",
+        "description": "",
+        "created_at": "2025-11-25T03:05:40.148Z"
+      },
+      {
+        "id": "0d009ff2-1b6e-4e85-9df7-9fce2053cbd6",
+        "name": "Chess",
+        "slug": "chess",
+        "description": "",
+        "created_at": "2025-11-25T03:05:59.149Z"
+      }
+    ]
+  },
+  {
+    "id": "9ab14fe6-4743-4c74-b5ae-4ba892294de8",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "test",
+    "slug": "test",
+    "short_description": "Test",
+    "background": "http://localhost:9000/background/1764321922473.png",
+    "description": null,
+    "price_bigint": "20000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-11-28T09:26:35.338Z",
+    "updated_at": "2025-11-28T09:26:35.338Z",
+    "enrollment_count": 0,
+    "categories": [
+      {
+        "id": "0d009ff2-1b6e-4e85-9df7-9fce2053cbd6",
+        "name": "Chess",
+        "slug": "chess",
+        "description": "",
+        "created_at": "2025-11-25T03:05:59.149Z"
+      }
+    ],
+    "lessons": [
+      {
+        "id": "1e47d9d7-8696-4104-900d-1cecd8549b2d",
+        "course_id": "9ab14fe6-4743-4c74-b5ae-4ba892294de8",
+        "title": "Test",
+        "content": "",
+        "media_url": "",
+        "order_idx": 0,
+        "duration_seconds": 0,
+        "status": "temp"
+      }
+    ]
+  }
+]

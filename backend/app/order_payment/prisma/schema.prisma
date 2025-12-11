@@ -1,0 +1,104 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../../node_modules/.prisma/order_payment_client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model order_items {
+  id           String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  order_id     String   @db.Uuid
+  course_id    String   @db.Uuid
+  price_bigint BigInt
+  qty          Int      @default(1)
+  created_at   DateTime @default(now()) @db.Timestamptz(6)
+  order        orders   @relation(fields: [order_id], references: [id])
+}
+
+model orders {
+  id                  String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id             String         @db.Uuid
+  total_amount_bigint BigInt
+  currency            String         @default("VND")
+  status              payment_status @default(pending)
+  created_at          DateTime       @default(now()) @db.Timestamptz(6)
+  updated_at          DateTime       @default(now()) @db.Timestamptz(6)
+  metadata            Json?          @default("{}")
+  coupon_id           String?        @db.Uuid
+  discount_amount_bigint BigInt      @default(0)
+  coupon              coupons?       @relation(fields: [coupon_id], references: [id])
+  order_items         order_items[]
+  payments            payments[]
+}
+
+model payment_transactions {
+  id            String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  payment_id    String   @db.Uuid
+  type          String
+  amount_bigint BigInt?
+  provider_ref  String?
+  status        String?
+  payload       Json?
+  created_at    DateTime @default(now()) @db.Timestamptz(6)
+  payment       payments @relation(fields: [payment_id], references: [id])
+}
+
+model payments {
+  id                   String                 @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  order_id             String                 @db.Uuid
+  attempt_key          String?
+  amount_bigint        BigInt
+  currency             String                 @default("VND")
+  provider             String
+  provider_payment_id  String?
+  status               payment_status         @default(pending)
+  requested_at         DateTime               @default(now()) @db.Timestamptz(6)
+  completed_at         DateTime?              @db.Timestamptz(6)
+  raw_response         Json?
+  metadata             Json?                  @default("{}")
+  created_at           DateTime               @default(now()) @db.Timestamptz(6)
+  payment_transactions payment_transactions[]
+  order                orders                 @relation(fields: [order_id], references: [id])
+  vnpay_transactions   vnpay_transactions[]
+}
+
+model coupons {
+  id              String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  code            String   @unique
+  discount_type   String   @default("percent") // percent, fixed
+  discount_value  Int      
+  max_usage       Int?     
+  usage_count     Int      @default(0)
+  valid_from      DateTime @default(now()) @db.Timestamptz(6)
+  valid_to        DateTime? @db.Timestamptz(6)
+  active          Boolean  @default(true)
+  created_at      DateTime @default(now()) @db.Timestamptz(6)
+  
+  orders          orders[]
+}
+
+model vnpay_transactions {
+  id                String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  payment_id        String    @db.Uuid
+  vnp_txnref        String?
+  vnp_transactionno String?
+  vnp_amount        BigInt?
+  vnp_bankcode      String?
+  vnp_paydate       DateTime? @db.Timestamptz(6)
+  vnp_responsecode  String?
+  vnp_securehash    String?
+  raw_payload       Json?
+  received_at       DateTime  @default(now()) @db.Timestamptz(6)
+  payment           payments  @relation(fields: [payment_id], references: [id])
+}
+
+enum payment_status {
+  pending
+  paid
+  failed
+  canceled
+  refunded
+}

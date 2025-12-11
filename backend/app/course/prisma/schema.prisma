@@ -1,0 +1,86 @@
+generator client {
+provider = "prisma-client-js"
+output   = "../../../node_modules/.prisma/course-client"
+}
+
+datasource db {
+provider = "postgresql"
+url      = env("DATABASE_URL")
+}
+
+model categories {
+id          String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+name        String    @unique
+slug        String    @unique
+description String?
+created_at  DateTime  @default(now()) @db.Timestamptz(6)
+
+courses     courses[] @relation("CourseToCategory")
+}
+
+model courses {
+id                String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+instructor_id     String      @db.Uuid
+title             String
+slug              String      @unique
+short_description String?
+background        String?
+description       String?
+price_bigint      BigInt      @default(0)
+currency          String      @default("VND")
+is_published      Boolean     @default(false)
+metadata          Json?       @default("{}")
+created_at        DateTime    @default(now()) @db.Timestamptz(6)
+updated_at        DateTime    @default(now()) @db.Timestamptz(6)
+enrollment_count  Int         @default(0)
+
+categories        categories[] @relation("CourseToCategory")
+lessons           lessons[]    @relation("CourseLessons")
+reviews           reviews[]    @relation("CourseReviews")
+}
+
+model lessons {
+id               String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+course_id        String           @db.Uuid
+title            String
+content          String?
+media_url        String?
+order_idx        Int              @default(0)
+duration_seconds Int?
+created_at       DateTime         @default(now()) @db.Timestamptz(6)
+status           String           @default("temp") @db.VarChar(20)
+temp_media_url   String?          @db.VarChar(255)
+temp_folder      String?          @db.VarChar(255)
+
+lessonProgress   lessonProgress[] @relation("LessonToProgress")
+course           courses          @relation("CourseLessons", fields: [course_id], references: [id])
+}
+
+model lessonProgress {
+id              String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+user_id         String    @db.Uuid
+lesson_id       String    @db.Uuid
+progress        Int?      @default(0)
+is_completed    Boolean?  @default(false)
+last_watched_at DateTime? @db.Timestamptz(6)
+created_at      DateTime? @default(now()) @db.Timestamptz(6)
+updated_at      DateTime? @default(now()) @db.Timestamptz(6)
+
+@@unique([user_id, lesson_id], name: "user_id_lesson_id")
+
+lesson          lessons   @relation("LessonToProgress", fields: [lesson_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model reviews {
+id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+course_id  String   @db.Uuid
+user_id    String   @db.Uuid
+rating     Int      @db.SmallInt
+title      String?
+content    String?
+is_public  Boolean  @default(true)
+created_at DateTime @default(now()) @db.Timestamptz(6)
+updated_at DateTime @default(now()) @db.Timestamptz(6)
+
+course     courses  @relation("CourseReviews", fields: [course_id], references: [id])
+}

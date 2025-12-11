@@ -1,0 +1,89 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../../node_modules/.prisma/enrollments_client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model certificates {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id     String   @db.Uuid
+  course_id   String   @db.Uuid
+  issued_at   DateTime @default(now()) @db.Timestamptz(6)
+  cert_number String?  @unique
+  metadata    Json?    @default("{}")
+}
+
+model enrollments {
+  id                String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id           String            @db.Uuid
+  course_id         String            @db.Uuid
+  status            enrollment_status @default(pending)
+  price_paid_bigint BigInt            @default(0)
+  currency          String            @default("VND")
+  enrolled_at       DateTime          @default(now()) @db.Timestamptz(6)
+  completed_at      DateTime?         @db.Timestamptz(6)
+  revoked_at        DateTime?         @db.Timestamptz(6)
+  metadata          Json?             @default("{}")
+
+  @@unique([user_id, course_id])
+}
+
+model exam_attempts {
+  id           String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  exam_id      String    @db.Uuid
+  user_id      String    @db.Uuid
+  score        Int?
+  passed       Boolean?
+  started_at   DateTime? @db.Timestamptz(6)
+  submitted_at DateTime? @db.Timestamptz(6)
+  answers      Json?
+  created_at   DateTime  @default(now()) @db.Timestamptz(6)
+  responses    answers[]
+}
+
+model exams {
+  id               String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  course_id        String      @db.Uuid
+  title            String?
+  description      String?
+  passing_score    Int?
+  duration_minutes Int?
+  created_at       DateTime    @default(now()) @db.Timestamptz(6)
+  questions        questions[]
+}
+
+model questions {
+  id             String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  exam_id        String    @db.Uuid
+  question_text  String
+  question_type  String?   @default("multiple_choice") @db.VarChar(50)
+  options        Json?
+  correct_answer String?
+  created_at     DateTime? @default(now()) @db.Timestamptz(6)
+  answers        answers[]
+  exam           exams     @relation(fields: [exam_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_exam")
+}
+
+model answers {
+  id              String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  question_id     String         @db.Uuid
+  user_id         String         @db.Uuid
+  exam_attempt_id String?        @db.Uuid
+  selected_answer String?
+  is_correct      Boolean?
+  answered_at     DateTime?      @default(now()) @db.Timestamptz(6)
+  exam_attempt    exam_attempts? @relation(fields: [exam_attempt_id], references: [id], onUpdate: NoAction, map: "fk_exam_attempt")
+  question        questions      @relation(fields: [question_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_question")
+}
+
+enum enrollment_status {
+  pending
+  active
+  completed
+  canceled
+  refunded
+}
