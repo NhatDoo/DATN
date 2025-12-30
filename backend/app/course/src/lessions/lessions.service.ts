@@ -4,6 +4,7 @@ import { Prisma, lessons } from '.prisma/course-client'; // Import Prisma namesp
 import { GenericService } from '@shared/core/generic.service';
 import { syncCourseToService } from '@shared/ultis/synccourse.ultis';
 import { JwtService } from '@nestjs/jwt';
+import axios from 'axios';
 
 @Injectable()
 export class LessionsService extends GenericService<lessons, Prisma.lessonsDelegate> {
@@ -25,11 +26,45 @@ export class LessionsService extends GenericService<lessons, Prisma.lessonsDeleg
       });
   }
 
-  async getByCourse(courseId: string) {
-    return this.prisma.lessons.findMany({
+  async getByCourse(courseId: string, userId?: string) {
+    const lessons = await this.prisma.lessons.findMany({
       where: { course_id: courseId },
       orderBy: { order_idx: 'asc' },
     });
+
+    let isEnrolled = false;
+
+    if (userId) {
+      try {
+        const { data } = await axios.get<any>('http://localhost:3003/enrollments/verify', {
+          params: { userId, courseId },
+        });
+        if (data.success && data.isEnrolled) {
+          isEnrolled = true;
+        }
+      } catch (error: any) {
+        console.error('Check enrollment error:', error.message);
+      }
+    }
+
+    if (isEnrolled) {
+      return lessons;
+    }
+
+    // Nếu chưa ghi danh, chỉ trả về thông tin cơ bản (ẩn video, content)
+    return lessons.map((lesson: any) => ({
+      id: lesson.id,
+      title: lesson.title,
+      slug: lesson.slug,
+      course_id: lesson.course_id,
+      order_idx: lesson.order_idx,
+      duration: lesson.duration,
+      is_preview: lesson.is_preview, // Nếu có trường này thì giữ lại
+      // Các trường bị ẩn/mask
+      content: null,
+      media_url: null,
+      video_id: null,
+    }));
   }
 
   async createBySlug(slug: string, data: any) {
@@ -115,9 +150,27 @@ export class LessionsService extends GenericService<lessons, Prisma.lessonsDeleg
   async generateLessonAccess(id: string, currentUserId: string) {
     const lesson = await this.prisma.lessons.findUnique({
       where: { id },
-      select: { id: true, title: true, media_url: true },
+      select: { id: true, title: true, media_url: true, course_id: true },
     });
     if (!lesson) throw new NotFoundException('Không tìm thấy bài học.');
+
+    // Kiểm tra ghi danh
+    let isEnrolled = false;
+    try {
+      const { data } = await axios.get<any>('http://localhost:3003/enrollments/verify', {
+        params: { userId: currentUserId, courseId: lesson.course_id },
+      });
+
+      if (data.success && data.isEnrolled) {
+        isEnrolled = true;
+      }
+    } catch (error: any) {
+      console.error('Check enrollment error:', error.message);
+    }
+
+    if (!isEnrolled) {
+      throw new ForbiddenException('Bạn chưa ghi danh vào khóa học này.');
+    }
 
     const token = this.jwtService.sign(
       {

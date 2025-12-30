@@ -1,5 +1,5 @@
 @echo off
-cd /d C:\Project\backend
+cd /d D:\Project\DATN
 
 start /b cmd /c "cd backend\app\recommend\server && uvicorn main:app --reload --port 3005 "
 timeout /t 1 >nul

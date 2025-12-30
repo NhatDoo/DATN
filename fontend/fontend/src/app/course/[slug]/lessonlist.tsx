@@ -122,27 +122,26 @@ export default function LessonList({ slug }: LessonListProps) {
         );
         const enrollData = await resEnroll.json();
 
-        if (!enrollData.isEnrolled) {
-          setMessage("Bạn chưa đăng ký khóa học này.");
-          setIsEnrolled(false);
-        } else {
-          setIsEnrolled(true);
+        console.log("🔍 DEBUG Enrollment:", { enrollData, isEnrolled: !!enrollData.isEnrolled, userId: user.id, courseId });
 
-          // 🔹 Lấy danh sách bài học
-          const resLesson = await fetch(`http://localhost:3001/lessions/course/${courseId}`, {
-            credentials: "include",
-          });
-          const lessonData = await resLesson.json();
+        setIsEnrolled(!!enrollData.isEnrolled);
 
-          let lessonsArray: Lesson[] = [];
-          if (Array.isArray(lessonData)) lessonsArray = lessonData;
-          else if (Array.isArray(lessonData.data)) lessonsArray = lessonData.data;
-          else if (lessonData.data?.lessons && Array.isArray(lessonData.data.lessons))
-            lessonsArray = lessonData.data.lessons;
+        // 🔹 Lấy danh sách bài học (Luôn lấy, kể cả chưa enroll)
+        const resLesson = await fetch(`http://localhost:3001/lessions/course/${courseId}`, {
+          credentials: "include",
+        });
+        const lessonData = await resLesson.json();
 
-          setLessons(lessonsArray);
+        let lessonsArray: Lesson[] = [];
+        if (Array.isArray(lessonData)) lessonsArray = lessonData;
+        else if (Array.isArray(lessonData.data)) lessonsArray = lessonData.data;
+        else if (lessonData.data?.lessons && Array.isArray(lessonData.data.lessons))
+          lessonsArray = lessonData.data.lessons;
 
-          // 🔹 Get Progress
+        setLessons(lessonsArray);
+
+        // 🔹 Get Progress (Chỉ lấy nếu đã enroll)
+        if (enrollData.isEnrolled) {
           try {
             const resProgress = await fetch(`http://localhost:3001/lessonprogress/progress/${courseId}`, {
               credentials: "include"
@@ -166,10 +165,22 @@ export default function LessonList({ slug }: LessonListProps) {
   }, [slug]);
 
   const handleWatch = async (lessonId: string) => {
+    // Kiểm tra nếu chưa ghi danh (và không phải khóa học miễn phí)
+    if (!isEnrolled && !isFreeCourse) {
+      alert("⚠️ Bạn cần ghi danh khóa học để xem video bài học này.");
+      return;
+    }
+
     try {
       const res = await fetch(`http://localhost:3001/lessions/access/${lessonId}`, {
         credentials: "include",
       });
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.message || "Không thể truy cập bài học.");
+      }
+
       const data = await res.json();
 
       sessionStorage.setItem("lesson_token", data.token);
@@ -182,14 +193,13 @@ export default function LessonList({ slug }: LessonListProps) {
 
       if (!data.token) throw new Error("Không thể tạo token xem bài học.");
       router.push(`/course/${slug}/watch?token=${data.token}`);
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      alert("Không thể xem bài học này.");
+      alert(err.message || "Không thể xem bài học này.");
     }
   };
 
   if (loading) return <p className="text-center mt-5">Đang tải dữ liệu...</p>;
-  if (!isEnrolled) return <p className="text-center text-danger mt-5">{message}</p>;
 
   return (
     <section className="py-4">
@@ -213,26 +223,44 @@ export default function LessonList({ slug }: LessonListProps) {
           )}
         </div>
 
+        {!isEnrolled && !isFreeCourse && (
+          <div className="alert alert-warning mb-3">
+            <strong>🔒 Nội dung bị khóa:</strong> Bạn cần ghi danh khóa học để xem video bài học.
+          </div>
+        )}
+
         {lessons.length === 0 ? (
           <p>Hiện chưa có bài học nào.</p>
         ) : (
           <ul className="list-group">
             {lessons.map((lesson) => {
               const isCompleted = completedLessonIds.includes(lesson.id);
+              const isLocked = !isEnrolled && !isFreeCourse;
               return (
                 <li
                   key={lesson.id}
-                  className="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => handleWatch(lesson.id)}
+                  className={`list-group-item d-flex justify-content-between align-items-center ${isLocked ? 'text-muted' : 'list-group-item-action'}`}
+                  style={{ cursor: isLocked ? "not-allowed" : "pointer", opacity: isLocked ? 0.7 : 1 }}
+                  onClick={() => {
+                    console.log("🔍 DEBUG Click:", { isLocked, isEnrolled, isFreeCourse, lessonId: lesson.id });
+                    if (!isLocked) handleWatch(lesson.id);
+                  }}
                 >
-                  <div>
-                    <h5 className="mb-1">{lesson.title}</h5>
-                    {lesson.description && <p className="text-muted mb-0 small">{lesson.description}</p>}
+                  <div className="d-flex align-items-center">
+                    {isLocked && <span className="me-2" title="Cần ghi danh để xem">🔒</span>}
+                    <div>
+                      <h5 className="mb-1">{lesson.title}</h5>
+                      {lesson.description && <p className="text-muted mb-0 small">{lesson.description}</p>}
+                    </div>
                   </div>
-                  {isCompleted && (
-                    <span className="badge bg-success rounded-pill">Completed ✓</span>
-                  )}
+                  <div>
+                    {isCompleted && (
+                      <span className="badge bg-success rounded-pill">Completed ✓</span>
+                    )}
+                    {isLocked && (
+                      <span className="badge bg-secondary rounded-pill">Chưa ghi danh</span>
+                    )}
+                  </div>
                 </li>
               );
             })}

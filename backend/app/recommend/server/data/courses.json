@@ -532,6 +532,30 @@
         "temp_media_url": null,
         "temp_folder": null
       }
+    ],
+    "reviews": [
+      {
+        "id": "5a33c984-e43e-4e29-9544-61f0c18ba3e5",
+        "course_id": "5b43e4b0-6982-45fb-92c1-ebe0b25392e3",
+        "user_id": "5f14e403-b8df-49b2-a2ed-6acf9e0acc8e",
+        "rating": 5,
+        "title": "Xin chào ",
+        "content": "AAA",
+        "is_public": true,
+        "created_at": "2025-12-30T15:58:29.255Z",
+        "updated_at": "2025-12-30T15:58:29.255Z"
+      },
+      {
+        "id": "1c3c73b7-1ec4-48e3-83c7-6e689cd107ac",
+        "course_id": "5b43e4b0-6982-45fb-92c1-ebe0b25392e3",
+        "user_id": "5f14e403-b8df-49b2-a2ed-6acf9e0acc8e",
+        "rating": 5,
+        "title": "Hahahaha",
+        "content": "AAA",
+        "is_public": true,
+        "created_at": "2025-12-30T15:58:39.627Z",
+        "updated_at": "2025-12-30T15:58:39.627Z"
+      }
     ]
   }
 ]

@@ -308,7 +308,7 @@ export default function CourseDetail() {
                   {/* 🔁 Nút linh hoạt theo trạng thái */}
                   {course.price_bigint > 0 && (
                     <>
-                      {!isEnrolled && (
+                      {!enrollmentStatus && (
                         <button
                           className="btn mt-4 w-100 text-white btn-enroll"
                           onClick={handleAddToCart}
@@ -317,7 +317,7 @@ export default function CourseDetail() {
                         </button>
                       )}
 
-                      {isEnrolled && enrollmentStatus === 'pending' && (
+                      {enrollmentStatus === 'pending' && (
                         <button
                           className="btn mt-4 w-100 text-white btn-success"
                           onClick={handleActivate}
@@ -327,7 +327,7 @@ export default function CourseDetail() {
                         </button>
                       )}
 
-                      {isEnrolled && enrollmentStatus === 'active' && (
+                      {enrollmentStatus === 'active' && (
                         <button
                           className="btn mt-4 w-100 text-white btn-danger"
                           onClick={handleRefund}

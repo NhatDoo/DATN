@@ -41,7 +41,8 @@ export class EnrollmentsController extends GenericController<enrollments, Enroll
     }
 
     const enrollment = await this.enrollmentsService.getEnrollment(userId, courseId);
-    const isEnrolled = !!enrollment;
+    // Chỉ coi là đã ghi danh khi status = 'active'
+    const isEnrolled = enrollment?.status === 'active';
     return {
       success: true,
       userId,
@@ -49,8 +50,10 @@ export class EnrollmentsController extends GenericController<enrollments, Enroll
       isEnrolled,
       status: enrollment?.status,
       message: isEnrolled
-        ? 'Đã đăng ký'
-        : 'Chưa đăng ký',
+        ? 'Đã ghi danh'
+        : enrollment
+          ? 'Đã mua nhưng chưa kích hoạt'
+          : 'Chưa đăng ký',
     };
   }
 

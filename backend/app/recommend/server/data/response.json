@@ -598,5 +598,53 @@
     "price": 20000,
     "timestamp": "2025-12-30T00:48:37.131Z",
     "metadata": null
+  },
+  {
+    "id": "6953eb596c4b87e8daba3a78",
+    "user_id": "5f14e403-b8df-49b2-a2ed-6acf9e0acc8e",
+    "course_id": "6f2a17ed-f018-4e5e-8d87-caea757c1e0d",
+    "action_type": "view",
+    "keyword": "Chiến thuật tư duy kết hợp BoardGame & Thể thao",
+    "tag": [],
+    "rating": null,
+    "price": 289000,
+    "timestamp": "2025-12-30T15:10:17.187Z",
+    "metadata": null
+  },
+  {
+    "id": "6953eb826c4b87e8daba3a79",
+    "user_id": "5f14e403-b8df-49b2-a2ed-6acf9e0acc8e",
+    "course_id": "5b43e4b0-6982-45fb-92c1-ebe0b25392e3",
+    "action_type": "view",
+    "keyword": "Boadgame cơ bản ",
+    "tag": [],
+    "rating": null,
+    "price": 30000,
+    "timestamp": "2025-12-30T15:10:58.652Z",
+    "metadata": null
+  },
+  {
+    "id": "6953f6d12d24b3e91fbdb58f",
+    "user_id": "5f14e403-b8df-49b2-a2ed-6acf9e0acc8e",
+    "course_id": "b5ed19ee-5b33-4a1f-a0d9-d751a1e9ddc9",
+    "action_type": "view",
+    "keyword": "Khóa học cơ bản về cờ tướng ",
+    "tag": [],
+    "rating": null,
+    "price": 30000,
+    "timestamp": "2025-12-30T15:59:13.100Z",
+    "metadata": null
+  },
+  {
+    "id": "6953f6de2d24b3e91fbdb590",
+    "user_id": "5f14e403-b8df-49b2-a2ed-6acf9e0acc8e",
+    "course_id": "b5ed19ee-5b33-4a1f-a0d9-d751a1e9ddc9",
+    "action_type": "view",
+    "keyword": "Khóa học cơ bản về cờ tướng ",
+    "tag": [],
+    "rating": null,
+    "price": 30000,
+    "timestamp": "2025-12-30T15:59:26.988Z",
+    "metadata": null
   }
 ]

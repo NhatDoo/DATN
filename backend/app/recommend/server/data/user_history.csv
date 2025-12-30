@@ -49,3 +49,7 @@ id,user_id,course_id,action_type,keyword,tag,rating,price,timestamp,metadata
 69531ff1465aead76005e306,5f14e403-b8df-49b2-a2ed-6acf9e0acc8e,fdd3b255-f8f7-488e-aae1-5442206150b1,view,Khóa học nodeJS ,[],,30000,2025-12-30 00:42:25.513,
 69531ff4465aead76005e307,5f14e403-b8df-49b2-a2ed-6acf9e0acc8e,fdd3b255-f8f7-488e-aae1-5442206150b1,view,Khóa học nodeJS ,[],,30000,2025-12-30 00:42:28.333,
 69532165465aead76005e308,5f14e403-b8df-49b2-a2ed-6acf9e0acc8e,9ab14fe6-4743-4c74-b5ae-4ba892294de8,view,test,[],,20000,2025-12-30 00:48:37.131,
+6953eb596c4b87e8daba3a78,5f14e403-b8df-49b2-a2ed-6acf9e0acc8e,6f2a17ed-f018-4e5e-8d87-caea757c1e0d,view,Chiến thuật tư duy kết hợp BoardGame & Thể thao,[],,289000,2025-12-30 15:10:17.187,
+6953eb826c4b87e8daba3a79,5f14e403-b8df-49b2-a2ed-6acf9e0acc8e,5b43e4b0-6982-45fb-92c1-ebe0b25392e3,view,Boadgame cơ bản ,[],,30000,2025-12-30 15:10:58.652,
+6953f6d12d24b3e91fbdb58f,5f14e403-b8df-49b2-a2ed-6acf9e0acc8e,b5ed19ee-5b33-4a1f-a0d9-d751a1e9ddc9,view,Khóa học cơ bản về cờ tướng ,[],,30000,2025-12-30 15:59:13.100,
+6953f6de2d24b3e91fbdb590,5f14e403-b8df-49b2-a2ed-6acf9e0acc8e,b5ed19ee-5b33-4a1f-a0d9-d751a1e9ddc9,view,Khóa học cơ bản về cờ tướng ,[],,30000,2025-12-30 15:59:26.988,
