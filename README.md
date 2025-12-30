@@ -1,3 +1,7 @@
+# Video demo ( hướng dẫn sử dụng ) 
+
+https://github.com/NhatDoo/DATN/tree/datn
+
 # Hướng dẫn chạy dự án bằng Docker
 
 Tài liệu này hướng dẫn cách build và chạy toàn bộ dự án (Frontend, Backend, và các dịch vụ hạ tầng) sử dụng Docker Compose.
