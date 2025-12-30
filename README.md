@@ -35,7 +35,7 @@ Dự án bao gồm các thành phần chính được định nghĩa trong `dock
 Đảm bảo bạn đang đứng tại thư mục chứa file `docker-compose.yml`.
 
 ```bash
-cd /đường/dẫn/tới/Project/DATN
+cd /đường/dẫn/tới/Project/DATN-datn
 ```
 
 ### Bước 2: Build và chạy các container
