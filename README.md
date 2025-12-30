@@ -1,6 +1,7 @@
 # Video demo ( hướng dẫn sử dụng ) 
+https://www.youtube.com/watch?v=b2-ZXBlTOrY
 
-https://github.com/NhatDoo/DATN/tree/datn
+
 
 # Hướng dẫn chạy dự án bằng Docker
 
