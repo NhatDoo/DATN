@@ -126,6 +126,16 @@ export class CourseService extends GenericService<courses, Prisma.coursesDelegat
         });
     }
 
+    async updateCourseInfo(courseId: string, data: { title?: string; background?: string }) {
+        return this.prisma.courses.update({
+            where: { id: courseId },
+            data: {
+                title: data.title,
+                background: data.background,
+            },
+        });
+    }
+
     async getCourseCategories(courseId: string) {
         const course = await this.prisma.courses.findUnique({
             where: { id: courseId },

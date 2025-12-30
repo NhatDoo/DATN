@@ -147,8 +147,6 @@ async def recommend_for_user(request: Request, access_token: str = Cookie(None),
 
     return result
 
-
-
 def load_courses():
     """Đọc danh sách khóa học từ file JSON"""
     if not os.path.exists(COURSES_FILE):
@@ -169,11 +167,6 @@ def save_courses(courses):
     os.makedirs(DATA_DIR, exist_ok=True)
     with open(COURSES_FILE, "w", encoding="utf-8") as f:
         json.dump(courses, f, indent=2, ensure_ascii=False)
-
-
-
-
-
 
 @app.post("/retrain")
 async def retrain():

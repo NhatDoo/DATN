@@ -13,6 +13,7 @@ import Head from "next/head";
 import "../../globals.css";
 import "./course-detail.css";
 import { checkIsBanned } from '@/app/ultis/checkbanned';
+import InstructorStudentProgress from "../../course/[slug]/InstructorStudentProgress";
 // Import new CSS file for animations
 
 export default function CourseDetail() {
@@ -20,6 +21,10 @@ export default function CourseDetail() {
   const [course, setCourse] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [exams, setExams] = useState<any[]>([]); // 🆕 State for exams
+  // State for editing course info
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [editTitle, setEditTitle] = useState("");
+  const [editBackground, setEditBackground] = useState("");
   const router = useRouter();
   const handleAddToCart = async () => {
 
@@ -68,6 +73,8 @@ export default function CourseDetail() {
         const data = await res.json();
         const result = Array.isArray(data) ? data[0] : data.data ?? data;
         setCourse(result);
+        setEditTitle(result.title);
+        setEditBackground(result.background || "");
       } catch (err) {
         console.error("❌ Lỗi khi fetch course:", err);
       } finally {
@@ -112,6 +119,58 @@ export default function CourseDetail() {
       }
     } catch (err) {
       console.error("Lỗi xóa bài kiểm tra:", err);
+    }
+  };
+
+  const handleUpdateCourse = async () => {
+    try {
+      const res = await fetch(`http://localhost:3001/course/${course.id}/info`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: editTitle,
+          background: editBackground,
+        }),
+      });
+
+      if (res.ok) {
+        alert("✅ Cập nhật thành công!");
+        setCourse({ ...course, title: editTitle, background: editBackground });
+        setShowEditModal(false);
+      } else {
+        alert("❌ Cập nhật thất bại.");
+      }
+    } catch (err) {
+      console.error("Lỗi cập nhật:", err);
+      alert("Đã xảy ra lỗi.");
+    }
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      // Assuming storage service is on port 3009 based on previous context
+      const res = await fetch("http://localhost:3009/upload/image", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!res.ok) throw new Error("Upload failed");
+
+      const data = await res.json();
+      if (data.imageUrl) {
+        setEditBackground(data.imageUrl);
+      }
+    } catch (err) {
+      console.error("Error uploading image:", err);
+      alert("Lỗi khi tải ảnh lên.");
     }
   };
 
@@ -169,6 +228,14 @@ export default function CourseDetail() {
                       {course.price_bigint} VND
                     </span>
                   </div>
+
+                  <button
+                    className="btn btn-outline-primary w-100 mt-3 animate-slide-up"
+                    style={{ animationDelay: "0.4s" }}
+                    onClick={() => setShowEditModal(true)}
+                  >
+                    ✏️ Chỉnh sửa thông tin
+                  </button>
                   {course.price_bigint > 0 && (
                     <>
                       {/* Nút thêm bài học */}
@@ -227,6 +294,62 @@ export default function CourseDetail() {
           </div>
         </div>
       </section>
+
+      <section className="py-5 bg-white">
+        <div className="container">
+          {course && <InstructorStudentProgress courseId={course.id} />}
+        </div>
+      </section>
+
+      {/* Modal chỉnh sửa thông tin */}
+      {showEditModal && (
+        <div className="modal show d-block" tabIndex={-1} role="dialog" style={{ backgroundColor: "rgba(0,0,0,0.5)" }}>
+          <div className="modal-dialog modal-dialog-centered" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Chỉnh sửa thông tin khóa học</h5>
+                <button type="button" className="btn-close" onClick={() => setShowEditModal(false)}></button>
+              </div>
+              <div className="modal-body">
+                <div className="mb-3">
+                  <label className="form-label">Tiêu đề khóa học</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={editTitle}
+                    onChange={(e) => setEditTitle(e.target.value)}
+                  />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Ảnh nền (Background)</label>
+                  <input
+                    type="file"
+                    className="form-control mb-2"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                  />
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Hoặc nhập URL..."
+                    value={editBackground}
+                    onChange={(e) => setEditBackground(e.target.value)}
+                  />
+                  {editBackground && (
+                    <div className="mt-2 text-center">
+                      <img src={editBackground} alt="Preview" className="img-fluid rounded" style={{ maxHeight: "150px" }} />
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" onClick={() => setShowEditModal(false)}>Hủy</button>
+                <button type="button" className="btn btn-primary" onClick={handleUpdateCourse}>Lưu thay đổi</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Thêm phần bài học */}
       <LessonList slug={slug as string} />

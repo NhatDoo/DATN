@@ -27,6 +27,12 @@ export class LessonprogressController {
     return this.service.markLessonComplete(user.id, dto.lessonId, dto.courseId);
   }
 
+  @UseGuards(JwtAuthGuard)
+  @Get('instructor/course/:courseId')
+  async getInstructorCourseProgress(@User() user: any, @Param('courseId') courseId: string) {
+    return this.service.getStudentProgressForCourse(courseId, user.id);
+  }
+
 
   @Post('internal/check-progress')
   async checkProgressInternal(@Body() body: { userId: string; courseId: string }) {

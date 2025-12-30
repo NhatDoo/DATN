@@ -13,6 +13,8 @@ import "../../globals.css";
 import "./course-detail.css";
 import { checkIsBanned } from '@/app/ultis/checkbanned';
 import StarRating from "../../components/StarRating";
+import ReportModal from "../../components/ReportModal";
+import InstructorStudentProgress from "./InstructorStudentProgress";
 
 export default function CourseDetail() {
   const { slug } = useParams();
@@ -23,6 +25,7 @@ export default function CourseDetail() {
   const [currentUserId, setCurrentUserId] = useState<string | null>(null);
   const [checkingEnroll, setCheckingEnroll] = useState(true);
   const [reviews, setReviews] = useState<any[]>([]);
+  const [showReportModal, setShowReportModal] = useState(false);
 
   // 🟢 Thêm vào giỏ hàng
   const handleAddToCart = async () => {
@@ -138,6 +141,33 @@ export default function CourseDetail() {
     } catch (e) {
       console.error("Activate error:", e);
       alert("Lỗi khi ghi danh.");
+    }
+  };
+
+  const handleReportSubmit = async (reason: string, description: string) => {
+    if (!currentUserId) {
+      alert("Vui lòng đăng nhập để báo cáo.");
+      return;
+    }
+    try {
+      const res = await fetch("http://localhost:3001/reports", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          course_id: course.id,
+          user_id: currentUserId,
+          reason,
+          description,
+        }),
+      });
+      if (res.ok) {
+        alert("Báo cáo đã được gửi thành công.");
+      } else {
+        alert("Gửi báo cáo thất bại.");
+      }
+    } catch (error) {
+      console.error("Report error:", error);
+      alert("Có lỗi xảy ra.");
     }
   };
 
@@ -317,12 +347,27 @@ export default function CourseDetail() {
                       📝 Làm bài kiểm tra
                     </button>
                   )}
+
+                  <button
+                    className="btn mt-3 w-100 btn-outline-secondary"
+                    onClick={() => setShowReportModal(true)}
+                  >
+                    🚩 Báo cáo khóa học
+                  </button>
+
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Instructor Progress Section */}
+      {currentUserId && course.instructor_id === currentUserId && (
+        <section className="py-4 container">
+          <InstructorStudentProgress courseId={course.id} />
+        </section>
+      )}
 
       {/* Đánh giá khóa học */}
       <section className="py-5">
@@ -386,6 +431,11 @@ export default function CourseDetail() {
       {/* Danh sách bài học */}
       <LessonList slug={slug as string} />
       <Footer />
+      <ReportModal
+        show={showReportModal}
+        onClose={() => setShowReportModal(false)}
+        onSubmit={handleReportSubmit}
+      />
     </main>
   );
 }

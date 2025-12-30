@@ -33,31 +33,31 @@ export default function LessonList({ slug }: LessonListProps) {
 
 
   useEffect(() => {
-  checkIsBanned();
-  const checkRole = async () => {
-    try {
-      const res = await fetch("http://localhost:3000/users/profile", {
-        credentials: "include",
-      });
+    checkIsBanned();
+    const checkRole = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/users/profile", {
+          credentials: "include",
+        });
 
-      // if (!res.ok) throw new Error("Không thể xác thực người dùng");
+        // if (!res.ok) throw new Error("Không thể xác thực người dùng");
 
-      const user = await res.json();
+        const user = await res.json();
 
-      // ⚙️ Kiểm tra role
-      if (user.role !== "instructor") {
-        alert("Bạn không có quyền truy cập trang này!");
+        // ⚙️ Kiểm tra role
+        if (user.role !== "instructor") {
+          alert("Bạn không có quyền truy cập trang này!");
+          router.push("/login");
+        }
+      } catch (err) {
+        console.error("❌ Lỗi xác thực:", err);
         router.push("/login");
+        router.refresh();
       }
-    } catch (err) {
-      console.error("❌ Lỗi xác thực:", err);
-      router.push("/login");
-      router.refresh();
-    }
-  };
+    };
 
-  checkRole();
-}, []);
+    checkRole();
+  }, []);
 
 
   useEffect(() => {
@@ -67,7 +67,7 @@ export default function LessonList({ slug }: LessonListProps) {
         const resCourse = await fetch(`http://localhost:3001/course/slug/${slug}`, {
           credentials: "include",
         });
-        
+
         const courseData = await resCourse.json();
         const course = Array.isArray(courseData)
           ? courseData[0]
@@ -75,20 +75,20 @@ export default function LessonList({ slug }: LessonListProps) {
         const courseId = course.id;
 
 
-          // 🔹 Lấy danh sách bài học
-          const resLesson = await fetch(`http://localhost:3001/lessions/course/${courseId}`, {
-            credentials: "include",
-          });
-          const lessonData = await resLesson.json();
+        // 🔹 Lấy danh sách bài học
+        const resLesson = await fetch(`http://localhost:3001/lessions/course/${courseId}`, {
+          credentials: "include",
+        });
+        const lessonData = await resLesson.json();
 
-          let lessonsArray: Lesson[] = [];
-          if (Array.isArray(lessonData)) lessonsArray = lessonData;
-          else if (Array.isArray(lessonData.data)) lessonsArray = lessonData.data;
-          else if (lessonData.data?.lessons && Array.isArray(lessonData.data.lessons))
-            lessonsArray = lessonData.data.lessons;
+        let lessonsArray: Lesson[] = [];
+        if (Array.isArray(lessonData)) lessonsArray = lessonData;
+        else if (Array.isArray(lessonData.data)) lessonsArray = lessonData.data;
+        else if (lessonData.data?.lessons && Array.isArray(lessonData.data.lessons))
+          lessonsArray = lessonData.data.lessons;
 
-          setLessons(lessonsArray);
-        }
+        setLessons(lessonsArray);
+      }
       catch (err) {
         console.error("❌ Lỗi khi fetch lessons:", err);
         setMessage("Đã xảy ra lỗi khi tải bài học.");
@@ -104,8 +104,6 @@ export default function LessonList({ slug }: LessonListProps) {
     try {
       // 🔹 Nếu là khóa học free → không cần token
 
-
-      
       const res = await fetch(`http://localhost:3001/lessions/access/${lessonId}`, {
         credentials: "include",
       });
@@ -116,10 +114,32 @@ export default function LessonList({ slug }: LessonListProps) {
 
       router.push(`/course/${slug}/watch`);
       return;
-      
+
     } catch (err) {
       console.error("❌ Lỗi khi tạo token xem bài học:", err);
       alert("Không thể xem bài học này.");
+    }
+  };
+
+  const handleDelete = async (e: React.MouseEvent, lessonId: string) => {
+    e.stopPropagation();
+    if (!confirm("Bạn có chắc chắn muốn xóa bài học này không?")) return;
+
+    try {
+      const res = await fetch(`http://localhost:3001/lessions/${lessonId}`, {
+        method: 'DELETE',
+        credentials: 'include',
+      });
+
+      if (res.ok) {
+        alert("Đã xóa bài học!");
+        setLessons(lessons.filter(l => l.id !== lessonId));
+      } else {
+        alert("Không thể xóa bài học.");
+      }
+    } catch (error) {
+      console.error("Lỗi khi xóa bài học:", error);
+      alert("Đã xảy ra lỗi.");
     }
   };
 
@@ -137,12 +157,20 @@ export default function LessonList({ slug }: LessonListProps) {
             {lessons.map((lesson) => (
               <li
                 key={lesson.id}
-                className="list-group-item list-group-item-action"
+                className="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
                 style={{ cursor: "pointer" }}
                 onClick={() => handleWatch(lesson.id)}
               >
-                <h5>{lesson.title}</h5>
-                {lesson.description && <p className="text-muted">{lesson.description}</p>}
+                <div>
+                  <h5>{lesson.title}</h5>
+                  {lesson.description && <p className="text-muted mb-0">{lesson.description}</p>}
+                </div>
+                <button
+                  className="btn btn-danger btn-sm z-index-2 position-relative"
+                  onClick={(e) => handleDelete(e, lesson.id)}
+                >
+                  🗑️ Xóa
+                </button>
               </li>
             ))}
           </ul>

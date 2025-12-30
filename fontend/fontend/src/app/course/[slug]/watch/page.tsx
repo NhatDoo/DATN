@@ -170,13 +170,18 @@ export default function WatchLessonPage() {
         const progressRes = await fetch(`http://localhost:3001/lessonprogress/progress/${courseId}`, {
           credentials: "include",
         });
-        if (!progressRes.ok) throw new Error("Không thể lấy tiến độ học");
+        if (!progressRes.ok) {
+          // If request fails (e.g. admin has no progress), just ignore
+          setProgress(0);
+          setIsComplete(false);
+          return;
+        }
         const data = await progressRes.json();
 
         setProgress(data.progress || 0);
         setIsComplete(data.isComplete || false);
       } catch (err: any) {
-        console.error("Lỗi tải tiến độ học:", err.message);
+        console.warn("Could not fetch progress:", err.message);
       }
     };
 
@@ -366,8 +371,8 @@ export default function WatchLessonPage() {
                             setNewReview({ ...newReview, rating: star })
                           }
                           className={`fs-4 me-1 ${star <= newReview.rating
-                              ? "text-warning"
-                              : "text-secondary"
+                            ? "text-warning"
+                            : "text-secondary"
                             }`}
                           style={{ cursor: "pointer" }}
                         >

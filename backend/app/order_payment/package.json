@@ -27,6 +27,7 @@
     "@nestjs/mapped-types": "*",
     "@nestjs/microservices": "^11.1.6",
     "@nestjs/platform-express": "^11.0.1",
+    "@nestjs/schedule": "^6.1.0",
     "amqp-connection-manager": "^5.0.0",
     "amqplib": "^0.10.9",
     "axios": "^1.12.2",
@@ -80,6 +81,10 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^@shared/(.*)$": "<rootDir>/../../shared/$1",
+      "^.prisma/order_payment_client$": "<rootDir>/../../order_payment/node_modules/.prisma/order_payment_client"
+    }
   }
 }

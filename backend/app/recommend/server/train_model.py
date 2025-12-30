@@ -66,12 +66,12 @@ def train_model():
 
     # ===== SAVE =====
     joblib.dump(tfidf, "models/tfidf_vectorizer.pkl")
-    joblib.dump(tfidf_matrix, "models/tfidf_matrix.pkl")   # << mới thêm
+    joblib.dump(tfidf_matrix, "models/tfidf_matrix.pkl")   
     joblib.dump(hybrid_sim, "models/course_similarity.pkl")
     joblib.dump(user_enc, "models/user_encoder.pkl")
     joblib.dump(course_enc, "models/course_encoder.pkl")
 
-    courses.to_csv("models/courses_reference.csv", index=False)  # << mới thêm
+    courses.to_csv("models/courses_reference.csv", index=False)  
 
     print("✅ Train model thành công")
     print("Hybrid shape:", hybrid_sim.shape)

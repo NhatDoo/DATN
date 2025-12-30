@@ -172,7 +172,7 @@ export default function CategoriesPage() {
                                         <tr>
                                             <td colSpan={4} className="text-center py-5">
                                                 <div className="spinner-border text-primary" role="status">
-                                                    <span className="visually-hidden">Loading...</span>
+                                                    <span className="visually-hidden"></span>
                                                 </div>
                                             </td>
                                         </tr>

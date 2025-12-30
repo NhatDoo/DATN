@@ -16,19 +16,6 @@
     "enrollment_count": 1,
     "lessons": [
       {
-        "id": "31ebfc69-94f3-4dfc-8756-e210784fe030",
-        "course_id": "1e1f70b1-76a4-4277-9739-3a24da349685",
-        "title": "Bài 3",
-        "content": "Bài 3",
-        "media_url": "",
-        "order_idx": 0,
-        "duration_seconds": 128,
-        "created_at": {},
-        "status": "temp",
-        "temp_media_url": "http://localhost:3009/upload/temp-stream/BCCK_DAMH_6c08dda5-c/playlist.m3u8",
-        "temp_folder": "BCCK_DAMH_6c08dda5-c"
-      },
-      {
         "id": "bc32d6d2-fc51-4941-bffb-a977bd117cb2",
         "course_id": "1e1f70b1-76a4-4277-9739-3a24da349685",
         "title": "Bài 1 ",
@@ -477,6 +464,71 @@
         "duration_seconds": 128,
         "status": "finish",
         "created_at": "2025-11-28T09:26:56.375Z",
+        "temp_media_url": null,
+        "temp_folder": null
+      }
+    ]
+  },
+  {
+    "id": "5fa09b93-fbb6-4d0d-b045-a976ea9f9212",
+    "instructor_id": "f156b620-d15d-4762-87f1-296f90b32968",
+    "title": "Khóa học Board Game nhập môn",
+    "slug": "boardgame-nhap-mon",
+    "short_description": "Học cách chơi các loại boardgame phổ biến.",
+    "background": null,
+    "description": null,
+    "price_bigint": "199000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-12-23T15:42:04.275Z",
+    "updated_at": "2025-12-23T15:42:04.275Z",
+    "enrollment_count": 0,
+    "categories": [
+      {
+        "id": "4ab0ef9e-a7f3-43e2-bfdd-aa632f3e2170",
+        "name": "BoardGame",
+        "slug": "boardgame",
+        "description": "",
+        "created_at": "2025-11-25T03:05:40.148Z"
+      }
+    ]
+  },
+  {
+    "id": "5b43e4b0-6982-45fb-92c1-ebe0b25392e3",
+    "instructor_id": "fc3cf1a2-944e-49fe-834a-bf98e245dcb4",
+    "title": "Boadgame cơ bản ",
+    "slug": "boadgame-co-ban",
+    "short_description": "Đây là khóa học board game cơ bản",
+    "background": "http://localhost:9000/background/1767055865850.png",
+    "description": null,
+    "price_bigint": "30000",
+    "currency": "VND",
+    "is_published": false,
+    "metadata": {},
+    "created_at": "2025-12-30T00:51:08.594Z",
+    "updated_at": "2025-12-30T00:51:08.594Z",
+    "enrollment_count": 0,
+    "categories": [
+      {
+        "id": "4ab0ef9e-a7f3-43e2-bfdd-aa632f3e2170",
+        "name": "BoardGame",
+        "slug": "boardgame",
+        "description": "",
+        "created_at": "2025-11-25T03:05:40.148Z"
+      }
+    ],
+    "lessons": [
+      {
+        "id": "eaf7830c-df59-4dbf-ab2d-8d04e7eff338",
+        "course_id": "5b43e4b0-6982-45fb-92c1-ebe0b25392e3",
+        "title": "Bài 1 Cơ bản về boardgame",
+        "content": "Cơ bản ",
+        "media_url": "BCCK_DAMH_64b1098b-d",
+        "order_idx": 0,
+        "duration_seconds": 128,
+        "status": "finish",
+        "created_at": "2025-12-30T00:51:47.103Z",
         "temp_media_url": null,
         "temp_folder": null
       }

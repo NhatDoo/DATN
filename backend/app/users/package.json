@@ -76,6 +76,10 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^@shared/(.*)$": "<rootDir>/../../shared/$1",
+      "^.prisma/users-client$": "<rootDir>/../../users/node_modules/.prisma/users-client"
+    }
   }
 }

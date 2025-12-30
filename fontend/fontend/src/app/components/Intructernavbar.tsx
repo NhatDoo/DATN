@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Cookies from "js-cookie";
 import styles from "./Intructernavbar.module.css";
@@ -12,6 +12,27 @@ export default function Intructernavbar() {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+
+  const [instructorName, setInstructorName] = useState<string>("");
+
+  useEffect(() => {
+    const fetchInstructorName = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/users/profile", {
+          credentials: "include",
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.full_name) {
+            setInstructorName(data.full_name);
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching profile:", error);
+      }
+    };
+    fetchInstructorName();
+  }, []);
 
   const handleLogout = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -34,6 +55,7 @@ export default function Intructernavbar() {
     { name: "Khóa học", href: "/intructor", icon: <BookIcon /> },
     { name: "Thêm khóa học", href: "/intructor/intructor_course", icon: <PlusCircleIcon /> },
     { name: "Blog", href: "/blog", icon: <FileTextIcon /> },
+    { name: "Cảnh báo", href: "/intructor/alerts", icon: <AlertIcon /> },
   ];
 
   return (
@@ -58,6 +80,11 @@ export default function Intructernavbar() {
                 </a>
               </li>
             ))}
+            <li className={styles.navItem}>
+              <span className={styles.navLink} style={{ cursor: "default", color: "#fff", fontWeight: "bold", fontSize: "0.85rem" }}>
+                Hi, {instructorName}
+              </span>
+            </li>
             <li className={styles.navItem}>
               <a href="/login" className={styles.logoutBtn} onClick={handleLogout}>
                 <LogoutIcon />
@@ -110,6 +137,11 @@ export default function Intructernavbar() {
             </li>
           ))}
           <li>
+            <span className={styles.mobileNavLink} style={{ color: "#fff", fontWeight: "bold", justifyContent: "center", fontSize: "0.9rem" }}>
+              Hi, {instructorName}
+            </span>
+          </li>
+          <li>
             <a
               href="/login"
               className={`${styles.mobileNavLink} ${styles.logoutBtn}`}
@@ -130,6 +162,16 @@ export default function Intructernavbar() {
 }
 
 // Icons
+function AlertIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+      <line x1="12" y1="9" x2="12" y2="13"></line>
+      <line x1="12" y1="17" x2="12.01" y2="17"></line>
+    </svg>
+  );
+}
+
 function InfoIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 import Cookies from "js-cookie";
@@ -13,6 +13,27 @@ export default function Navbar() {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+
+  const [userName, setUserName] = useState<string>("");
+
+  useEffect(() => {
+    const fetchUserName = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/users/profile", {
+          credentials: "include",
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.full_name) {
+            setUserName(data.full_name);
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching profile:", error);
+      }
+    };
+    fetchUserName();
+  }, []);
 
   const handleLogout = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -61,6 +82,11 @@ export default function Navbar() {
                 </a>
               </li>
             ))}
+            <li className={styles.navItem}>
+              <span className={styles.navLink} style={{ cursor: "default", color: "#fff", fontWeight: "bold", fontSize: "0.85rem" }}>
+                Hi, {userName}
+              </span>
+            </li>
             <li className={styles.navItem}>
               <a href="/login" className={styles.logoutBtn} onClick={handleLogout}>
                 <LogoutIcon />
@@ -112,6 +138,11 @@ export default function Navbar() {
               </a>
             </li>
           ))}
+          <li>
+            <span className={styles.mobileNavLink} style={{ color: "#fff", fontWeight: "bold", justifyContent: "center", fontSize: "0.9rem" }}>
+              Hi, {userName}
+            </span>
+          </li>
           <li>
             <a
               href="/login"

@@ -55,6 +55,7 @@ services:
       /usr/bin/mc mb --ignore-existing myminio/video;
       /usr/bin/mc mb --ignore-existing myminio/tempvideo;
       /usr/bin/mc mb --ignore-existing myminio/background;
+      /usr/bin/mc mb --ignore-existing myminio/backups;
       /usr/bin/mc anonymous set public myminio/background;
       exit 0;
       "
@@ -177,6 +178,24 @@ services:
       - PORT=3000
     ports:
       - "3007:3000"
+
+  backup-service:
+    build:
+      context: ./backend
+      dockerfile: app/backup/Dockerfile
+    container_name: datn_backup
+    depends_on:
+      - postgres
+      - minio
+    environment:
+      - DB_HOST=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=datn_db
+      - MINIO_ENDPOINT_HOST=minio
+      - MINIO_PORT=9000
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
 
   # Frontend
   frontend:

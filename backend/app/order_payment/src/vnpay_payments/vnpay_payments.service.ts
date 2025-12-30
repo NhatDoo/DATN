@@ -1,4 +1,6 @@
 import { Injectable, InternalServerErrorException, BadRequestException } from '@nestjs/common';
+import { Cron, CronExpression } from '@nestjs/schedule';
+import { ConfigService } from '@nestjs/config';
 import { VNPay, ProductCode, VnpLocale, HashAlgorithm } from 'vnpay';
 import crypto from 'crypto';
 import { PrismaService } from '../prisma.service';
@@ -16,16 +18,21 @@ export class VnpayPaymentsService extends GenericService<vnpay_transactions, Pri
   private readonly vnpay: VNPay;
 
 
-  private readonly vnp_TmnCode = 'GBZ59K2C';
-  private readonly vnp_SecureSecret = 'XGDIU2WVBI6FUR1T88SUE1I9IP5029H9';
+  private readonly vnp_TmnCode: string;
+  private readonly vnp_SecureSecret: string;
   private readonly vnp_ApiUrl = 'https://sandbox.vnpayment.vn/merchant_webapi/api/transaction';
 
 
   constructor(
     private prisma: PrismaService,
     private readonly paymentsService: PaymentsService,
-    private readonly paymentProducerService: PaymentProducerService,) {
+    private readonly paymentProducerService: PaymentProducerService,
+    private readonly configService: ConfigService,
+  ) {
     super(prisma.vnpay_transactions);
+
+    this.vnp_TmnCode = this.configService.get<string>('VNP_TMN_CODE') || '';
+    this.vnp_SecureSecret = this.configService.get<string>('VNP_HASH_SECRET') || '';
 
     this.vnpay = new VNPay({
       tmnCode: this.vnp_TmnCode,
@@ -122,7 +129,7 @@ export class VnpayPaymentsService extends GenericService<vnpay_transactions, Pri
       // ✅ Tạo chữ ký bảo mật
       const secureHash = this.genSecureHash(
         dataQuery,
-        (this.vnpay as any).config.secureSecret,
+        this.vnp_SecureSecret,
       );
       dataQuery['vnp_SecureHash'] = secureHash;
 
@@ -608,6 +615,70 @@ export class VnpayPaymentsService extends GenericService<vnpay_transactions, Pri
       message: refundResult?.data?.vnp_Message ?? 'Không thể refund',
       data: refundResult.data,
     };
+  }
+
+  @Cron(CronExpression.EVERY_MINUTE)
+  async checkPendingPayments() {
+    // console.log('🔄 [CRON] Checking pending VNPAY payments...');
+
+    // 1. Tìm các payment đang pending quá 15 phút
+    const timeLimit = moment().subtract(15, 'minutes').toDate();
+    const pendingPayments = await this.prisma.payments.findMany({
+      where: {
+        status: 'pending',
+        provider: 'vnpay',
+        created_at: { lt: timeLimit },
+      },
+      take: 20, // Xử lý mỗi lần 20 đơn để tránh quá tải
+    });
+
+    if (pendingPayments.length === 0) return;
+
+    console.log(`🔍 Found ${pendingPayments.length} pending payments to check.`);
+
+    for (const payment of pendingPayments) {
+      try {
+        console.log(`Checking payment status for Order ID: ${payment.order_id}`);
+
+        // 2. Gọi VNPAY để kiểm tra trạng thái thực tế
+        const queryResult = await this.queryTransaction({
+          orderId: payment.order_id,
+          transactionDate: moment(payment.created_at).format('YYYYMMDDHHmmss'),
+          ipAddr: '127.0.0.1',
+        });
+
+        const vnpData = queryResult.data;
+
+        // 3. Xử lý kết quả trả về
+        if (vnpData.vnp_ResponseCode === '00') {
+          const vnpStatus = vnpData.vnp_TransactionStatus;
+
+          if (vnpStatus === '00') {
+            // 🟢 Đã thanh toán thành công -> Cập nhật thành PAID
+            console.log(`✅ Order ${payment.order_id} success on VNPAY -> Updating local status...`);
+            await this.paymentsService.handlePaymentResult(payment.order_id, 'paid', vnpData);
+          } else if (vnpStatus === '02') {
+            // 🔴 Đã thất bại -> Cập nhật thành FAILED
+            console.log(`❌ Order ${payment.order_id} failed on VNPAY -> Updating local status...`);
+            await this.paymentsService.handlePaymentResult(payment.order_id, 'failed', vnpData);
+          } else {
+            // Trạng thái khác (ví dụ '01' chưa thanh toán xong) -> Có thể để kệ nó hoặc đánh dấu failed nếu quá lâu
+            // Nếu đã quá 24h mà vẫn 01 thì có thể hủy
+            if (moment().diff(moment(payment.created_at), 'hours') > 24) {
+              await this.paymentsService.handlePaymentResult(payment.order_id, 'canceled', vnpData);
+            }
+          }
+        } else if (vnpData.vnp_ResponseCode === '91') {
+          // '91': Không tìm thấy giao dịch (có thể do lỗi tạo đơn bên VNPAY chưa thành công)
+          // Nếu quá lâu (ví dụ 1 tiếng) -> Canceled
+          if (moment().diff(moment(payment.created_at), 'hours') > 1) {
+            await this.paymentsService.handlePaymentResult(payment.order_id, 'canceled', vnpData);
+          }
+        }
+      } catch (err) {
+        console.error(`Error checking payment ${payment.order_id}:`, err);
+      }
+    }
   }
 
 }

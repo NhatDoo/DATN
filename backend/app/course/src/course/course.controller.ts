@@ -1,4 +1,4 @@
-import { Controller, Param, Get, UseGuards } from '@nestjs/common';
+import { Controller, Param, Get, UseGuards, Patch, Body } from '@nestjs/common';
 import { EventPattern, Payload, MessagePattern } from '@nestjs/microservices';
 import { CourseService } from './course.service';
 import { GenericController } from '@shared/core/generic.controller';
@@ -33,6 +33,14 @@ export class CourseController extends GenericController<courses, CourseService> 
   @Get(':id/categories')
   async getCourseCategories(@Param('id') id: string) {
     return this.courseService.getCourseCategories(id);
+  }
+
+  @Patch(':id/info')
+  async updateCourseInfo(
+    @Param('id') id: string,
+    @Body() body: { title?: string; background?: string },
+  ) {
+    return this.courseService.updateCourseInfo(id, body);
   }
 
 

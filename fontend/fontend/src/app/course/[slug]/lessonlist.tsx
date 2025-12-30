@@ -28,6 +28,11 @@ export default function LessonList({ slug }: LessonListProps) {
   const [message, setMessage] = useState("");
   const [isFreeCourse, setIsFreeCourse] = useState(false);
   const [lessonId, setLessonId] = useState<string | null>(null);
+
+  // Progress State
+  const [progress, setProgress] = useState(0);
+  const [completedLessonIds, setCompletedLessonIds] = useState<string[]>([]);
+
   const router = useRouter();
 
   useEffect(() => {
@@ -43,7 +48,7 @@ export default function LessonList({ slug }: LessonListProps) {
         const resCourse = await fetch(`http://localhost:3001/course/slug/${slug}`, {
           credentials: "include",
         });
-        
+
         const courseData = await resCourse.json();
         const course = Array.isArray(courseData)
           ? courseData[0]
@@ -69,7 +74,20 @@ export default function LessonList({ slug }: LessonListProps) {
             lessonsArray = lessonData.data.lessons;
 
           setLessons(lessonsArray);
-          return; // ❗ Không cần kiểm tra enrollment nữa
+
+          // Get progress for free course (if user is logged in, they might have progress)
+          try {
+            const resProgress = await fetch(`http://localhost:3001/lessonprogress/progress/${courseId}`, {
+              credentials: "include"
+            });
+            if (resProgress.ok) {
+              const progressData = await resProgress.json();
+              setCompletedLessonIds(progressData.completedLessonIds || []);
+              setProgress((progressData.progress || 0) * 100);
+            }
+          } catch (e) { console.warn("Could not fetch progress for free course", e); }
+
+          return;
         }
 
         // 🔹 Nếu KHÔNG miễn phí, phải xác thực người dùng
@@ -77,7 +95,25 @@ export default function LessonList({ slug }: LessonListProps) {
           credentials: "include",
         });
         if (!resUser.ok) throw new Error("Không thể lấy thông tin người dùng");
-        const user: User = await resUser.json();
+        const user: any = await resUser.json();
+
+        // Check if user is admin
+        if (user.role === 'admin') {
+          setIsEnrolled(true);
+          const resLesson = await fetch(`http://localhost:3001/lessions/course/${courseId}`, {
+            credentials: "include",
+          });
+          const lessonData = await resLesson.json();
+
+          let lessonsArray: Lesson[] = [];
+          if (Array.isArray(lessonData)) lessonsArray = lessonData;
+          else if (Array.isArray(lessonData.data)) lessonsArray = lessonData.data;
+          else if (lessonData.data?.lessons && Array.isArray(lessonData.data.lessons))
+            lessonsArray = lessonData.data.lessons;
+
+          setLessons(lessonsArray);
+          return;
+        }
 
         // 🔹 Kiểm tra enroll
         const resEnroll = await fetch(
@@ -105,6 +141,18 @@ export default function LessonList({ slug }: LessonListProps) {
             lessonsArray = lessonData.data.lessons;
 
           setLessons(lessonsArray);
+
+          // 🔹 Get Progress
+          try {
+            const resProgress = await fetch(`http://localhost:3001/lessonprogress/progress/${courseId}`, {
+              credentials: "include"
+            });
+            if (resProgress.ok) {
+              const progressData = await resProgress.json();
+              setCompletedLessonIds(progressData.completedLessonIds || []);
+              setProgress((progressData.progress || 0) * 100);
+            }
+          } catch (e) { console.error("Error fetching progress", e); }
         }
       } catch (err) {
         console.error("❌ Lỗi khi fetch lessons:", err);
@@ -117,29 +165,28 @@ export default function LessonList({ slug }: LessonListProps) {
     fetchLessons();
   }, [slug]);
 
-const handleWatch = async (lessonId: string) => {
-  try {
-    const res = await fetch(`http://localhost:3001/lessions/access/${lessonId}`, {
-      credentials: "include",
-    });
-    const data = await res.json();
+  const handleWatch = async (lessonId: string) => {
+    try {
+      const res = await fetch(`http://localhost:3001/lessions/access/${lessonId}`, {
+        credentials: "include",
+      });
+      const data = await res.json();
 
-    // Lưu token và lessonId
-    sessionStorage.setItem("lesson_token", data.token);
-    sessionStorage.setItem("lesson_id", lessonId);
+      sessionStorage.setItem("lesson_token", data.token);
+      sessionStorage.setItem("lesson_id", lessonId);
 
-    if (isFreeCourse) {
-      router.push(`/course/${slug}/watch`);
-      return;
+      if (isFreeCourse) {
+        router.push(`/course/${slug}/watch`);
+        return;
+      }
+
+      if (!data.token) throw new Error("Không thể tạo token xem bài học.");
+      router.push(`/course/${slug}/watch?token=${data.token}`);
+    } catch (err) {
+      console.error(err);
+      alert("Không thể xem bài học này.");
     }
-
-    if (!data.token) throw new Error("Không thể tạo token xem bài học.");
-    router.push(`/course/${slug}/watch?token=${data.token}`);
-  } catch (err) {
-    console.error(err);
-    alert("Không thể xem bài học này.");
-  }
-};
+  };
 
   if (loading) return <p className="text-center mt-5">Đang tải dữ liệu...</p>;
   if (!isEnrolled) return <p className="text-center text-danger mt-5">{message}</p>;
@@ -147,22 +194,48 @@ const handleWatch = async (lessonId: string) => {
   return (
     <section className="py-4">
       <div className="container">
-        <h3 className="mb-4">Danh sách bài học</h3>
+        <div className="d-flex justify-content-between align-items-center mb-4">
+          <h3 className="mb-0">Danh sách bài học</h3>
+          {isEnrolled && (
+            <div className="text-end" style={{ minWidth: '200px' }}>
+              <span className="text-muted small">Tiến độ: {Math.round(progress)}%</span>
+              <div className="progress mt-1" style={{ height: '8px' }}>
+                <div
+                  className="progress-bar bg-success"
+                  role="progressbar"
+                  style={{ width: `${progress}%` }}
+                  aria-valuenow={progress}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                ></div>
+              </div>
+            </div>
+          )}
+        </div>
+
         {lessons.length === 0 ? (
           <p>Hiện chưa có bài học nào.</p>
         ) : (
           <ul className="list-group">
-            {lessons.map((lesson) => (
-              <li
-                key={lesson.id}
-                className="list-group-item list-group-item-action"
-                style={{ cursor: "pointer" }}
-                onClick={() => handleWatch(lesson.id)}
-              >
-                <h5>{lesson.title}</h5>
-                {lesson.description && <p className="text-muted">{lesson.description}</p>}
-              </li>
-            ))}
+            {lessons.map((lesson) => {
+              const isCompleted = completedLessonIds.includes(lesson.id);
+              return (
+                <li
+                  key={lesson.id}
+                  className="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => handleWatch(lesson.id)}
+                >
+                  <div>
+                    <h5 className="mb-1">{lesson.title}</h5>
+                    {lesson.description && <p className="text-muted mb-0 small">{lesson.description}</p>}
+                  </div>
+                  {isCompleted && (
+                    <span className="badge bg-success rounded-pill">Completed ✓</span>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         )}
       </div>

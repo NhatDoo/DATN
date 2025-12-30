@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 import styles from "./AdminNavbar.module.css";
@@ -13,12 +13,33 @@ export default function AdminNavbar() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const [adminName, setAdminName] = useState<string>("");
+
+  useEffect(() => {
+    const fetchAdminName = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/users/profile", {
+          credentials: "include",
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.full_name) {
+            setAdminName(data.full_name);
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching profile:", error);
+      }
+    };
+    fetchAdminName();
+  }, []);
+
   const navItems = [
     { name: "Người dùng", href: "/admin/users", icon: <UserIcon /> },
     { name: "Danh mục", href: "/admin/categories", icon: <CategoryIcon /> },
     { name: "Đơn hàng", href: "/admin/orders", icon: <OrderIcon /> },
     { name: "Mã giảm giá", href: "/admin/coupons", icon: <CouponIcon /> },
-    { name: "Phản hồi", href: "/report", icon: <ReportIcon /> },
+    { name: "Phản hồi", href: "/admin/reports", icon: <ReportIcon /> },
   ];
 
   return (
@@ -43,6 +64,11 @@ export default function AdminNavbar() {
                 </a>
               </li>
             ))}
+            <li className={styles.navItem}>
+              <span className={styles.navLink} style={{ cursor: "default", color: "#fff", fontWeight: "bold", fontSize: "0.85rem" }}>
+                Hi, {adminName}
+              </span>
+            </li>
             <li className={styles.navItem}>
               <a href="/login" className={styles.logoutBtn}>
                 <LogoutIcon />
@@ -94,6 +120,11 @@ export default function AdminNavbar() {
               </a>
             </li>
           ))}
+          <li>
+            <span className={styles.mobileNavLink} style={{ color: "#fff", fontWeight: "bold", justifyContent: "center", fontSize: "0.9rem" }}>
+              Hi, {adminName}
+            </span>
+          </li>
           <li>
             <a
               href="/login"
