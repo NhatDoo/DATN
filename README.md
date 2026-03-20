@@ -1,3 +1,20 @@
+#PHẦN MỀM QUẢN LÝ VÀ ĐÁNH GIÁ KHÓA HỌC TRỰC TUYẾN 
+Phần mềm Quản lý và Đánh giá Khóa học Trực tuyến là một hệ thống backend được xây dựng nhằm hỗ trợ quản lý người dùng, khóa học, nội dung học tập và hệ thống đánh giá (review/rating) một cách hiệu quả và có khả năng mở rộng cao. Hệ thống được thiết kế theo kiến trúc microservices kết hợp với mô hình event-driven, cho phép các thành phần hoạt động độc lập, dễ dàng scale và phù hợp với các ứng dụng thực tế quy mô lớn.
+Dự án không chỉ tập trung vào các chức năng CRUD cơ bản mà còn tích hợp các nghiệp vụ nâng cao như xử lý thanh toán, quản lý media (video, hình ảnh), và giao tiếp bất đồng bộ giữa các service, từ đó mô phỏng một hệ thống backend production-ready.
+
+⚙️ Công nghệ sử dụng
+
+Backend Framework: NestJS, FastAPI( đối với mô hình AI RAG và AI recommend) 
+Kiến trúc: Microservices + Event-Driven Architecture
+Database: PostgreSQL (Supabase)
+ORM: Prisma
+Message Broker: RabbitMQ
+Storage: MinIO (S3-compatible)
+Media Processing: HLS Streaming (video segmentation)
+Payment Integration: VNPAY
+Containerization: Docker, Docker Compose
+API Documentation: Swagger / OpenAPI
+
 # Video demo ( hướng dẫn sử dụng ) 
 https://www.youtube.com/watch?v=b2-ZXBlTOrY
 
